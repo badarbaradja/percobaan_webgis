@@ -3358,3 +3358,49 @@ html {
 .route-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);}
+/* --- Tambahan untuk Styling Leaflet Routing Machine di dalam Panel (Latar Belakang Putih) --- */
+
+/* Memastikan Routing Machine menyesuaikan di dalam div #route-instructions */
+#route-instructions .leaflet-routing-container {
+  padding: 1rem;
+  /* GANTI LATAR BELAKANG MENJADI PUTIH */
+  background: #110b0b !important; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(0, 0, 0); /* Tambah shadow agar terlihat menonjol */
+  border: 1px solid #ffffff;
+  margin-top: 1.5rem;
+  font-family: var(--font-secondary);
+}
+
+/* Menyembunyikan input default Routing Machine agar tidak double dengan input panel */
+#route-instructions .leaflet-routing-geocoders {
+  display: none;
+}
+
+/* --- SOLUSI TEKS OTOMATIS HITAM DI LATAR PUTIH --- */
+
+/* Menargetkan SEMUA ELEMEN TEKS di dalam kontainer instruksi */
+#route-instructions .leaflet-routing-container *,
+#route-instructions .leaflet-routing-container h2,
+#route-instructions .leaflet-routing-container h3,
+#route-instructions .leaflet-routing-alt,
+#route-instructions .leaflet-routing-instructions {
+  color: #ffffff !important; /* Ganti warna teks menjadi abu-abu gelap/hampir hitam */
+}
+
+/* Memastikan ikon rute (panah, dll) terlihat jelas */
+#route-instructions .leaflet-routing-icon {
+  filter: none !important; /* Hapus filter invert agar ikon kembali ke warna aslinya (hitam) */
+}
+
+/* Menyesuaikan warna link/tombol swap rute */
+#route-instructions .leaflet-routing-container a,
+#route-instructions .leaflet-routing-container button {
+  color: var(--primary) !important; /* Gunakan warna primary tema Anda untuk link/tombol */
+}
+
+/* Menyesuaikan jarak antar instruksi rute */
+#route-instructions .leaflet-routing-instruction {
+  border-bottom: 1px solid #ffffff !important; /* Border terang agar terlihat di latar putih */
+  padding: 0.5rem 0;
+}

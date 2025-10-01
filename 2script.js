@@ -178,6 +178,9 @@ function initializeMap() {
 
     // Add custom dark style
     map.getContainer().style.filter = "invert(1) hue-rotate(180deg)"
+    
+    // TAMBAHKAN: Inisialisasi Routing Control
+    initializeRouting(map)
 
     // Add markers
     addMarkersToMap(map)
@@ -1908,4 +1911,113 @@ function registerWithGoogle() {
 
 function registerWithFacebook() {
   alert("Daftar dengan Facebook akan segera hadir!")
+}
+
+// --- FUNGSI BARU UNTUK INTEGRASI ROUTING ---
+
+// 1. Fungsi Inisialisasi Routing
+function initializeRouting(mapInstance) {
+    // Inisialisasi Leaflet Routing Control
+    routingControl = L.Routing.control({
+        router: L.Routing.osrmv1({
+            serviceUrl: "https://router.project-osrm.org/route/v1",
+        }),
+        waypoints: [], // Biarkan kosong, akan diisi saat tombol diklik
+        // Arahkan output instruksi rute ke div custom di panel
+        container: document.getElementById('route-instructions'), 
+        routeWhileDragging: true,
+        geocoder: L.Control.Geocoder.nominatim(),
+        showAlternatives: false,
+        fitSelectedRoute: true, 
+        createMarker: function (i, wp, n) {
+            return L.marker(wp.latLng, {
+                draggable: true,
+            }).bindPopup(i === 0 ? "Titik Asal" : "Titik Tujuan");
+        },
+    }).addTo(mapInstance);
+
+    // Sembunyikan kontrol routing dari tampilan peta agar hanya tampil di panel
+    routingControl.getContainer().style.display = 'none';
+
+    // Event listener untuk tombol "Cari Rute"
+    document
+        .getElementById("routeBtn")
+        .addEventListener("click", calculateRoute);
+
+    // Event listener klik peta untuk mengisi input start/end
+    mapInstance.on("click", function (e) {
+        const latlngStr = `${e.latlng.lat.toFixed(6)},${e.latlng.lng.toFixed(6)}`;
+        
+        // Gunakan clickCount untuk bergantian mengisi input start dan end
+        if (clickCount % 2 === 0) {
+            document.getElementById("origin-input").value = latlngStr;
+        } else {
+            document.getElementById("destination-input").value = latlngStr;
+        }
+        clickCount++;
+    });
+}
+
+// 2. Fungsi Parsing Koordinat
+function parseLatLng(str) {
+    // Memeriksa apakah input adalah format koordinat "lat,lng"
+    const parts = str.split(",").map((x) => x.trim());
+    if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+        return L.latLng(parseFloat(parts[0]), parseFloat(parts[1]));
+    }
+    // Jika bukan, kembalikan string (alamat/nama tempat) agar ditangani Geocoder
+    return str; 
+}
+
+// 3. Fungsi Menghitung Rute
+function calculateRoute() {
+    if (!routingControl) return;
+
+    const s = document.getElementById("origin-input").value.trim();
+    const e = document.getElementById("destination-input").value.trim();
+
+    const wp1 = parseLatLng(s);
+    const wp2 = parseLatLng(e);
+
+    // Filter waypoint yang valid
+    const waypoints = [wp1, wp2].filter(wp => wp && (typeof wp === 'string' ? wp.length > 0 : true));
+
+    if (waypoints.length < 2) {
+        alert('Mohon masukkan Titik Asal dan Titik Tujuan yang valid (koordinat "lat,lng" atau nama tempat).');
+        return;
+    }
+
+    // Tampilkan kontrol routing di peta saat rute dicari
+    routingControl.getContainer().style.display = 'block';
+
+    // Set Waypoints dan panggil perhitungan rute
+    routingControl.setWaypoints(waypoints);
+    
+    // Tutup panel info lokasi jika sedang terbuka
+    closeLocationPanel(); 
+}
+
+// 4. Fungsi Hapus Rute
+function clearRoute() {
+    if (routingControl) {
+        // Hapus rute dari peta
+        routingControl.setWaypoints([]);
+        // Kosongkan input
+        document.getElementById("origin-input").value = "";
+        document.getElementById("destination-input").value = "";
+        // Sembunyikan kembali kontrol routing dari peta
+        routingControl.getContainer().style.display = 'none';
+        // Clear isi div instruksi
+        document.getElementById("route-instructions").innerHTML = "";
+    }
+}
+
+// 5. Tambahkan fungsi show/close panel (Jika belum ada di 2script.js.txt)
+// HTML Anda memanggil fungsi ini, jadi kita harus memastikannya ada.
+function showRoutePanel() {
+    document.getElementById("routing-panel").classList.add("active");
+}
+
+function closeRoutingPanel() {
+    document.getElementById("routing-panel").classList.remove("active");
 }
