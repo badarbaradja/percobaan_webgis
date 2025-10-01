@@ -1,1 +1,1241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGIS Pariwisata Bandung</title>
+    <link rel="stylesheet" href="2style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet-control-geocoder@2.4.0/dist/Control.Geocoder.css"
+/>
+</head>
+<body>
+     Header 
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <span class="logo-text">Bandung</span>
+                <span class="logo-accent">GIS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#profile" class="nav-link">Profile</a></li>
+                <li><a href="#maps" class="nav-link">Maps</a></li>
+                <li><a href="#payment" class="nav-link">Payment</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                 
+                <li><a href="#login" class="nav-link" id="auth-nav-link">Login</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Cari destinasi...">
+                <button class="search-btn">🔍</button>
+            </div>
+             
+            <div id="user-profile-dropdown" class="user-profile-dropdown" style="display: none;">
+                <div class="profile-avatar" onclick="toggleProfileDropdown()">
+                    <span id="user-avatar-text">U</span>
+                </div>
+                <div class="dropdown-menu" id="profile-dropdown-menu">
+                    <div class="dropdown-header">
+                        <div class="user-info">
+                            <span id="user-name-display">User Name</span>
+                            <span id="user-email-display">user@email.com</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a href="#profile" class="dropdown-item" onclick="showUserProfile()">
+                        👤 Profil Saya
+                    </a>
+                    <a href="#payment" class="dropdown-item" onclick="showPaymentHistory()">
+                        📋 Riwayat Pemesanan
+                    </a>
+                    <a href="#" class="dropdown-item" onclick="showSettings()">
+                        ⚙️ Pengaturan
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item logout" onclick="logout()">
+                        🚪 Keluar
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+     Hero Section 
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">JELAJAHI PESONA BANDUNG</h1>
+            <p class="hero-description">Temukan petualanganmu, dari keindahan alam yang mempesona hingga budaya yang kental, semuanya di satu peta digital interaktif.</p>
+            <button class="cta-button" onclick="scrollToMaps()">Start Exploring</button>
+        </div>
+        <div class="floating-elements">
+            <div class="floating-element" style="--delay: 0s"></div>
+            <div class="floating-element" style="--delay: 2s"></div>
+            <div class="floating-element" style="--delay: 4s"></div>
+        </div>
+    </section>
+
+     <!--category section-->
+     
+    <section class="category-section">
+        <h2 class="section-title">Pilih Kategori Wisata</h2>
+        <div class="category-controls">
+            <button class="reset-theme-btn" onclick="setTheme('default')">
+                <span class="reset-icon">🔄</span>
+                Reset Theme
+            </button>
+        </div>
+        <div class="category-grid">
+            <button class="category-card" data-category="alam" onclick="setTheme('alam')">
+                <div class="category-icon">🌿</div>
+                <h3>Alam</h3>
+                <p>Jelajahi keindahan alam Bandung</p>
+                <div class="category-blur-bg alam-blur"></div>
+            </button>
+            <button class="category-card" data-category="budaya" onclick="setTheme('budaya')">
+                <div class="category-icon">🏛️</div>
+                <h3>Budaya</h3>
+                <p>Temukan warisan budaya yang kaya</p>
+                <div class="category-blur-bg budaya-blur"></div>
+            </button>
+            <button class="category-card" data-category="rekreasi" onclick="setTheme('rekreasi')">
+                <div class="category-icon">🎢</div>
+                <h3>Rekreasi</h3>
+                <p>Nikmati hiburan dan rekreasi</p>
+                <div class="category-blur-bg rekreasi-blur"></div>
+            </button>
+            <button class="category-card" data-category="kuliner" onclick="setTheme('kuliner')">
+                <div class="category-icon">🍜</div>
+                <h3>Kuliner</h3>
+                <p>Rasakan kelezatan kuliner khas</p>
+                <div class="category-blur-bg kuliner-blur"></div>
+            </button>
+        </div>
+    </section>
+
+     <!--Panorama Section-->
+
+    <section class="panorama-section">
+        <div class="panorama-content">
+            <div class="panorama-video">
+                <div class="video-overlay"></div>
+                <h2 class="panorama-title">Keindahan Bandung dalam Setiap Sudut</h2>
+            </div>
+        </div>
+    </section>
+
+     <!--Interactive Maps Section-->
+
+    <section id="maps" class="maps-section">
+        <div class="maps-header">
+            <h2 class="section-title">Peta Interaktif Bandung</h2>
+            <button class="fullscreen-btn" onclick="openFullscreenMap()">Lihat Peta Penuh</button>
+        </div>
+        
+        <div class="maps-container">
+            <div class="map-filters">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="alam">🌿 Alam</button>
+                <button class="filter-btn" data-filter="budaya">🏛️ Budaya</button>
+                <button class="filter-btn" data-filter="rekreasi">🎢 Rekreasi</button>
+                <button class="filter-btn" data-filter="kuliner">🍜 Kuliner</button>
+            </div>
+            <iframe src="peta/index.html" class="map" style="border:0;" width="100%" height="600"></iframe>
+
+            
+            <!-- Added floating route button -->
+            <button id="floating-route-btn" class="floating-route-btn" onclick="showRoutePanel()" style="display: none;">
+                <span class="route-icon">🗺️</span>
+                Lihat Rute
+            </button>
+        </div>
+
+         <!-- Enhanced location info panel with more details -->
+        <div id="location-panel" class="location-panel">
+            <button class="close-panel" onclick="closeLocationPanel()">×</button>
+            <div class="location-content">
+                <div class="location-gallery">
+                    <img id="location-image" src="public/kawah-putih-crater-lake.jpg" alt="">
+                    <div class="image-overlay">
+                        <button class="gallery-btn" onclick="openImageGallery()">📷 Lihat Galeri</button>
+                    </div>
+                </div>
+                <div class="location-info">
+                    <h3 id="location-name"></h3>
+                    <div class="location-rating">
+                        <div class="stars-container">
+                            <span id="location-stars"></span>
+                            <span id="location-rating-text"></span>
+                        </div>
+                        <button class="reviews-btn" onclick="showReviews()">Lihat Ulasan</button>
+                    </div>
+                    <p id="location-category" class="category-badge"></p>
+                    <p id="location-description"></p>
+                    
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <strong>📍 Alamat:</strong> 
+                            <span id="location-address"></span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>🕒 Jam Operasional:</strong> 
+                            <span id="location-hours"></span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>📞 Kontak:</strong> 
+                            <span id="location-contact"></span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>🌐 Koordinat:</strong> 
+                            <span id="location-coordinates"></span>
+                        </div>
+                        <div class="detail-item">
+                            <strong>💰 Harga Tiket:</strong> 
+                            <span id="location-price"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="route-btn primary" onclick="showRoutePanel()">🗺️ Lihat Rute</button>
+                        <button class="see-more-btn" onclick="showLocationFullscreen()">👁️ Lihat Selengkapnya</button>
+                        <button class="book-ticket-btn" onclick="openPaymentModal()">🎫 Pesan Tiket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Added routing panel -->
+        <div id="routing-panel" class="routing-panel">
+            <button class="close-panel" onclick="closeRoutingPanel()">×</button>
+            <div class="routing-content">
+                <h3>Perencanaan Rute</h3>
+                <div class="route-form">
+                    <div class="input-group">
+                        <label>📍 Titik Asal</label>
+                        <input type="text" id="origin-input" placeholder="Masukkan lokasi asal Anda...">
+                        <button class="location-btn" onclick="getCurrentLocation()">📱 Lokasi Saya</button>
+                    </div>
+                    
+                    <div class="route-swap">
+                        <button onclick="swapLocations()">🔄</button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>🎯 Tujuan</label>
+                        <input type="text" id="destination-input" readonly>
+                    </div>
+                    
+                    <div class="route-options">
+                        <label>🚗 Mode Transportasi</label>
+                        <select id="transport-mode">
+                            <option value="driving">Mobil</option>
+                            <option value="walking">Jalan Kaki</option>
+                            <option value="cycling">Sepeda</option>
+                        </select>
+                    </div>
+                    
+                    <button class="calculate-route-btn" onclick="calculateRoute()">
+                        🧭 Hitung Rute
+                    </button>
+                </div>
+                
+                <div id="route-results" class="route-results" style="display: none;">
+                    <div class="route-summary">
+                        <div class="route-stat">
+                            <span class="stat-icon">📏</span>
+                            <div>
+                                <span class="stat-label">Jarak</span>
+                                <span id="route-distance" class="stat-value">-</span>
+                            </div>
+                        </div>
+                        <div class="route-stat">
+                            <span class="stat-icon">⏱️</span>
+                            <div>
+                                <span class="stat-label">Waktu</span>
+                                <span id="route-duration" class="stat-value">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="route-instructions">
+                        <h4>Petunjuk Arah</h4>
+                        <div id="route-steps"></div>
+                    </div>
+                    
+                    <button class="start-navigation-btn" onclick="startNavigation()">
+                        🧭 Mulai Navigasi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!--News Section-->
+
+    <section class="news-section">
+        <h2 class="section-title">Wawasan & Panduan Destinasi Bandung</h2>
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <h3>Festival Budaya Bandung 2024</h3>
+                    <p>Jangan lewatkan festival budaya terbesar tahun ini di Gedung Sate.</p>
+                    <span class="news-date">15 Desember 2024</span>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <h3>Tips Wisata Alam Bandung</h3>
+                    <p>Panduan lengkap untuk menjelajahi keindahan alam Bandung.</p>
+                    <span class="news-date">10 Desember 2024</span>
+                </div>
+            </article>
+            <article class="news-card">
+                <div class="news-image"></div>
+                <div class="news-content">
+                    <h3>Kuliner Khas yang Wajib Dicoba</h3>
+                    <p>Rekomendasi makanan khas Bandung yang tidak boleh dilewatkan.</p>
+                    <span class="news-date">5 Desember 2024</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+     <!--Profile Section-->
+
+    <section id="profile" class="profile-section">
+        <div class="profile-content">
+            <div class="about-section">
+                <h2 class="section-title">Tentang WebGIS Pariwisata Bandung</h2>
+                <p class="about-text">
+                    WebGIS Pariwisata Bandung adalah platform digital inovatif yang menggabungkan teknologi Geographic Information System (GIS) dengan pengalaman wisata yang immersive. Kami berkomitmen untuk memudahkan eksplorasi, perencanaan perjalanan, dan penemuan destinasi baru di Kota Bandung melalui teknologi futuristik yang ramah pengguna.
+                </p>
+            </div>
+            
+            <div class="team-section">
+                <h2 class="section-title">Tim Kami</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar"></div>
+                        <h3>Ahmad Rizki</h3>
+                        <p class="team-role">GIS Specialist</p>
+                        <p class="team-desc">Ahli dalam pengembangan sistem informasi geografis dan analisis spasial.</p>
+                        <div class="team-social">
+                            <a href="#">LinkedIn</a>
+                            <a href="#">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar"></div>
+                        <h3>Sari Dewi</h3>
+                        <p class="team-role">UI/UX Designer</p>
+                        <p class="team-desc">Menciptakan pengalaman pengguna yang intuitif dan menarik secara visual.</p>
+                        <div class="team-social">
+                            <a href="#">LinkedIn</a>
+                            <a href="#">Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar"></div>
+                        <h3>Budi Santoso</h3>
+                        <p class="team-role">Frontend Developer</p>
+                        <p class="team-desc">Mengimplementasikan desain menjadi kode yang interaktif dan responsif.</p>
+                        <div class="team-social">
+                            <a href="#">LinkedIn</a>
+                            <a href="#">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!--Payment Section -->
+
+    <section id="payment" class="payment-section">
+        <div class="payment-content">
+            <h2 class="section-title">Sistem Pembayaran Wisata</h2>
+            <p class="payment-description">
+                Pesan tiket wisata dengan mudah dan aman. Nikmati berbagai pilihan destinasi dengan harga terjangkau.
+            </p>
+            
+            <div class="payment-features">
+                <div class="feature-card">
+                    <div class="feature-icon">🎫</div>
+                    <h3>Pesan Tiket Online</h3>
+                    <p>Pesan tiket destinasi wisata favorit Anda dengan mudah</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>Pembayaran Aman</h3>
+                    <p>Berbagai metode pembayaran yang aman dan terpercaya</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>E-Ticket Digital</h3>
+                    <p>Dapatkan e-ticket langsung di ponsel Anda</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3>Promo Menarik</h3>
+                    <p>Nikmati berbagai promo dan diskon khusus</p>
+                </div>
+            </div>
+            
+            <div class="popular-destinations">
+                <h3>Destinasi Populer</h3>
+                <div class="destination-grid">
+                    <div class="destination-card" onclick="selectDestination('kawah-putih')">
+                        <img src="public/kawah-putih-crater-lake.jpg" alt="Kawah Putih">
+                        <div class="destination-info">
+                            <h4>Kawah Putih</h4>
+                            <div class="destination-price">Rp 25.000</div>
+                            <div class="destination-rating">⭐ 4.5 (234 ulasan)</div>
+                        </div>
+                    </div>
+                    <div class="destination-card" onclick="selectDestination('gedung-sate')">
+                        <img src="public/gedung-sate-bandung-architecture.jpg" alt="Gedung Sate">
+                        <div class="destination-info">
+                            <h4>Gedung Sate</h4>
+                            <div class="destination-price">Gratis</div>
+                            <div class="destination-rating">⭐ 4.3 (189 ulasan)</div>
+                        </div>
+                    </div>
+                    <div class="destination-card" onclick="selectDestination('trans-studio')">
+                        <img src="public/trans-studio-bandung-theme-park.jpg" alt="Trans Studio">
+                        <div class="destination-info">
+                            <h4>Trans Studio Bandung</h4>
+                            <div class="destination-price">Rp 50.000</div>
+                            <div class="destination-rating">⭐ 4.4 (345 ulasan)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-actions">
+                <button class="payment-cta-btn" onclick="openPaymentModal()">
+                    🎫 Mulai Pesan Tiket
+                </button>
+                <button class="history-btn" onclick="showPaymentHistory()">
+                    📋 Riwayat Pemesanan
+                </button>
+            </div>
+        </div>
+    </section>
+
+     Footer 
+    <footer id="contact" class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hubungi Kami</h3>
+                <div class="contact-links">
+                    <a href="#" class="contact-link">📧 info@bandunggis.id</a>
+                    <a href="#" class="contact-link">📱 +62 812-3456-7890</a>
+                    <a href="#" class="contact-link">📍 Bandung, Jawa Barat</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Media Sosial</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 WebGIS Pariwisata Bandung. All rights reserved.</p>
+        </div>
+    </footer>
+
+     Fullscreen Map Modal 
+    <div id="fullscreen-modal" class="fullscreen-modal">
+        <div class="fullscreen-header">
+            <h2>Peta Bandung</h2>
+            <button class="close-fullscreen" onclick="closeFullscreenMap()">×</button>
+        </div>
+        <div class="fullscreen-content">
+            <div class="fullscreen-sidebar">
+                <div class="sidebar-search">
+                    <input type="text" placeholder="Cari lokasi..." class="sidebar-search-input">
+                </div>
+                <div class="sidebar-filters">
+                    <button class="sidebar-filter active" data-filter="all">Semua</button>
+                    <button class="sidebar-filter" data-filter="alam">🌿 Alam</button>
+                    <button class="sidebar-filter" data-filter="budaya">🏛️ Budaya</button>
+                    <button class="sidebar-filter" data-filter="rekreasi">🎢 Rekreasi</button>
+                    <button class="sidebar-filter" data-filter="kuliner">🍜 Kuliner</button>
+                </div>
+                <div class="sidebar-sorting">
+                    <select class="sort-select">
+                        <option value="popular">Terpopuler</option>
+                        <option value="rating">Rating Tertinggi</option>
+                        <option value="distance">Terdekat</option>
+                    </select>
+                </div>
+            </div>
+            <div id="fullscreen-map" class="fullscreen-map"></div>
+        </div>
+    </div>
+
+     <!-- Added fullscreen location modal -->
+    <div id="location-fullscreen-modal" class="fullscreen-modal">
+        <div class="fullscreen-header">
+            <h2 id="fullscreen-location-title">Detail Lokasi</h2>
+            <button class="close-fullscreen" onclick="closeLocationFullscreen()">×</button>
+        </div>
+        <div class="location-fullscreen-content">
+            <div class="fullscreen-gallery">
+                <div class="main-image">
+                    <img id="fullscreen-main-image" src="/placeholder.svg" alt="">
+                </div>
+                <div class="thumbnail-gallery">
+                    <div class="thumbnail active">
+                        <img src="public/kawah-putih-crater-lake.jpg" alt="">
+                    </div>
+                    <div class="thumbnail">
+                        <img src="/placeholder.svg?height=80&width=120" alt="">
+                    </div>
+                    <div class="thumbnail">
+                        <img src="/placeholder.svg?height=80&width=120" alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fullscreen-info">
+                <div class="location-header">
+                    <h1 id="fullscreen-location-name"></h1>
+                    <div class="rating-detailed">
+                        <div class="stars-large">
+                            <span id="fullscreen-stars"></span>
+                            <span id="fullscreen-rating"></span>
+                        </div>
+                        <span class="review-count">Berdasarkan 234 ulasan</span>
+                    </div>
+                </div>
+                
+                <div class="location-tabs">
+                    <button class="tab-btn active" onclick="showTab('overview')">Ringkasan</button>
+                    <button class="tab-btn" onclick="showTab('reviews')">Ulasan</button>
+                    <button class="tab-btn" onclick="showTab('photos')">Foto</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="overview-tab" class="tab-panel active">
+                        <p id="fullscreen-description"></p>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Kategori</strong>
+                                <span id="fullscreen-category"></span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Alamat</strong>
+                                <span id="fullscreen-address"></span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Jam Operasional</strong>
+                                <span id="fullscreen-hours"></span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Kontak</strong>
+                                <span id="fullscreen-contact"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="reviews-tab" class="tab-panel">
+                        <div class="reviews-summary">
+                            <div class="rating-breakdown">
+                                <div class="rating-bar">
+                                    <span>5⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 60%"></div></div>
+                                    <span>60%</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>4⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 25%"></div></div>
+                                    <span>25%</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>3⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 10%"></div></div>
+                                    <span>10%</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>2⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 3%"></div></div>
+                                    <span>3%</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span>1⭐</span>
+                                    <div class="bar"><div class="fill" style="width: 2%"></div></div>
+                                    <span>2%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="reviews-list">
+                            <div class="review-item">
+                                <div class="reviewer">
+                                    <div class="avatar">A</div>
+                                    <div class="reviewer-info">
+                                        <strong>Ahmad Rizki</strong>
+                                        <span>⭐⭐⭐⭐⭐</span>
+                                    </div>
+                                </div>
+                                <p>Tempat yang sangat indah dan menakjubkan! Air kawahnya berwarna putih kehijauan yang unik. Sangat recommended untuk dikunjungi.</p>
+                                <span class="review-date">2 minggu yang lalu</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="photos-tab" class="tab-panel">
+                        <div class="photos-grid">
+                            <div class="photo-item">
+                                <img src="/placeholder.svg?height=200&width=300" alt="">
+                            </div>
+                            <div class="photo-item">
+                                <img src="/placeholder.svg?height=200&width=300" alt="">
+                            </div>
+                            <div class="photo-item">
+                                <img src="/placeholder.svg?height=200&width=300" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Added Payment Modal -->
+    <div id="payment-modal" class="payment-modal">
+        <div class="payment-modal-content">
+            <div class="payment-header">
+                <h2>Pesan Tiket Wisata</h2>
+                <button class="close-payment" onclick="closePaymentModal()">×</button>
+            </div>
+            
+            <div class="payment-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Pilih Destinasi</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Detail Pemesanan</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Pembayaran</span>
+                </div>
+                <div class="step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-label">Konfirmasi</span>
+                </div>
+            </div>
+            
+            <div class="payment-body">
+                 Step 1: Destination Selection 
+                <div id="step-1" class="payment-step active">
+                    <h3>Pilih Destinasi Wisata</h3>
+                    <div class="destination-selection">
+                        <div class="destination-option" data-destination="kawah-putih">
+                            <img src="public/kawah-putih-crater-lake.jpg" alt="Kawah Putih">
+                            <div class="option-info">
+                                <h4>Kawah Putih</h4>
+                                <p>Danau kawah vulkanik yang menakjubkan</p>
+                                <div class="option-price">Rp 25.000 <span>/orang</span></div>
+                            </div>
+                            <input type="radio" name="destination" value="kawah-putih">
+                        </div>
+                        <div class="destination-option" data-destination="gedung-sate">
+                            <img src="public/gedung-sate-bandung-architecture.jpg" alt="Gedung Sate">
+                            <div class="option-info">
+                                <h4>Gedung Sate</h4>
+                                <p>Bangunan bersejarah ikon Bandung</p>
+                                <div class="option-price">Gratis</div>
+                            </div>
+                            <input type="radio" name="destination" value="gedung-sate">
+                        </div>
+                        <div class="destination-option" data-destination="trans-studio">
+                            <img src="public/trans-studio-bandung-theme-park.jpg" alt="Trans Studio">
+                            <div class="option-info">
+                                <h4>Trans Studio Bandung</h4>
+                                <p>Taman hiburan indoor terbesar</p>
+                                <div class="option-price">Rp 50.000 <span>/orang</span></div>
+                            </div>
+                            <input type="radio" name="destination" value="trans-studio">
+                        </div>
+                    </div>
+                </div>
+                
+                 Step 2: Booking Details 
+                <div id="step-2" class="payment-step">
+                    <h3>Detail Pemesanan</h3>
+                    <div class="booking-form">
+                        <div class="form-group">
+                            <label>Tanggal Kunjungan</label>
+                            <input type="date" id="visit-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Jumlah Pengunjung</label>
+                            <div class="quantity-selector">
+                                <button type="button" onclick="changeQuantity(-1)">-</button>
+                                <input type="number" id="visitor-count" value="1" min="1" max="10">
+                                <button type="button" onclick="changeQuantity(1)">+</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Pemesan</label>
+                            <input type="text" id="booker-name" placeholder="Masukkan nama lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="booker-email" placeholder="email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telepon</label>
+                            <input type="tel" id="booker-phone" placeholder="08xxxxxxxxxx" required>
+                        </div>
+                        <div class="booking-summary">
+                            <h4>Ringkasan Pemesanan</h4>
+                            <div class="summary-item">
+                                <span>Destinasi:</span>
+                                <span id="summary-destination">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Tanggal:</span>
+                                <span id="summary-date">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Jumlah:</span>
+                                <span id="summary-quantity">1 orang</span>
+                            </div>
+                            <div class="summary-item total">
+                                <span>Total:</span>
+                                <span id="summary-total">Rp 0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                 Step 3: Payment 
+                <div id="step-3" class="payment-step">
+                    <h3>Metode Pembayaran</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method" data-method="bank-transfer">
+                            <div class="method-icon">🏦</div>
+                            <div class="method-info">
+                                <h4>Transfer Bank</h4>
+                                <p>BCA, Mandiri, BNI, BRI</p>
+                            </div>
+                            <input type="radio" name="payment-method" value="bank-transfer">
+                        </div>
+                        <div class="payment-method" data-method="e-wallet">
+                            <div class="method-icon">📱</div>
+                            <div class="method-info">
+                                <h4>E-Wallet</h4>
+                                <p>GoPay, OVO, DANA, ShopeePay</p>
+                            </div>
+                            <input type="radio" name="payment-method" value="e-wallet">
+                        </div>
+                        <div class="payment-method" data-method="credit-card">
+                            <div class="method-icon">💳</div>
+                            <div class="method-info">
+                                <h4>Kartu Kredit</h4>
+                                <p>Visa, Mastercard, JCB</p>
+                            </div>
+                            <input type="radio" name="payment-method" value="credit-card">
+                        </div>
+                        <div class="payment-method" data-method="qris">
+                            <div class="method-icon">📲</div>
+                            <div class="method-info">
+                                <h4>QRIS</h4>
+                                <p>Scan QR untuk pembayaran</p>
+                            </div>
+                            <input type="radio" name="payment-method" value="qris">
+                        </div>
+                    </div>
+                    
+                    <div id="payment-details" class="payment-details" style="display: none;">
+                         Payment method specific details will be shown here 
+                    </div>
+                </div>
+                
+                 Step 4: Confirmation 
+                <div id="step-4" class="payment-step">
+                    <div class="confirmation-content">
+                        <div class="success-icon">✅</div>
+                        <h3>Pembayaran Berhasil!</h3>
+                        <p>Terima kasih atas pemesanan Anda. E-ticket telah dikirim ke email Anda.</p>
+                        
+                        <div class="ticket-info">
+                            <h4>Informasi Tiket</h4>
+                            <div class="ticket-details">
+                                <div class="ticket-item">
+                                    <span>Kode Booking:</span>
+                                    <span id="booking-code">-</span>
+                                </div>
+                                <div class="ticket-item">
+                                    <span>Destinasi:</span>
+                                    <span id="final-destination">-</span>
+                                </div>
+                                <div class="ticket-item">
+                                    <span>Tanggal:</span>
+                                    <span id="final-date">-</span>
+                                </div>
+                                <div class="ticket-item">
+                                    <span>Jumlah:</span>
+                                    <span id="final-quantity">-</span>
+                                </div>
+                                <div class="ticket-item">
+                                    <span>Total Bayar:</span>
+                                    <span id="final-total">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="confirmation-actions">
+                            <button class="download-ticket-btn" onclick="downloadTicket()">
+                                📄 Download E-Ticket
+                            </button>
+                            <button class="view-history-btn" onclick="showPaymentHistory()">
+                                📋 Lihat Riwayat
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-footer">
+                <button id="prev-btn" class="btn-secondary" onclick="previousStep()" style="display: none;">
+                    ← Sebelumnya
+                </button>
+                <button id="next-btn" class="btn-primary" onclick="nextStep()">
+                    Selanjutnya →
+                </button>
+            </div>
+        </div>
+    </div>
+
+     <!-- Added Payment History Modal -->
+    <div id="payment-history-modal" class="payment-modal">
+        <div class="payment-modal-content">
+            <div class="payment-header">
+                <h2>Riwayat Pemesanan</h2>
+                <button class="close-payment" onclick="closePaymentHistory()">×</button>
+            </div>
+            
+            <div class="history-filters">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="completed">Selesai</button>
+                <button class="filter-btn" data-filter="pending">Menunggu</button>
+                <button class="filter-btn" data-filter="cancelled">Dibatalkan</button>
+            </div>
+            
+            <div class="history-list">
+                <div class="history-item completed">
+                    <div class="history-info">
+                        <h4>Kawah Putih</h4>
+                        <p>Kode: BWG001234</p>
+                        <p>Tanggal: 15 Desember 2024</p>
+                        <p>2 orang</p>
+                    </div>
+                    <div class="history-status">
+                        <span class="status completed">Selesai</span>
+                        <div class="history-total">Rp 50.000</div>
+                    </div>
+                    <div class="history-actions">
+                        <button class="btn-small" onclick="downloadTicket('BWG001234')">Download</button>
+                        <button class="btn-small" onclick="viewTicketDetails('BWG001234')">Detail</button>
+                    </div>
+                </div>
+                
+                <div class="history-item pending">
+                    <div class="history-info">
+                        <h4>Trans Studio Bandung</h4>
+                        <p>Kode: BWG001235</p>
+                        <p>Tanggal: 20 Desember 2024</p>
+                        <p>1 orang</p>
+                    </div>
+                    <div class="history-status">
+                        <span class="status pending">Menunggu Pembayaran</span>
+                        <div class="history-total">Rp 50.000</div>
+                    </div>
+                    <div class="history-actions">
+                        <button class="btn-small primary" onclick="continuePayment('BWG001235')">Bayar</button>
+                        <button class="btn-small" onclick="cancelBooking('BWG001235')">Batal</button>
+                    </div>
+                </div>
+                
+                <div class="history-item completed">
+                    <div class="history-info">
+                        <h4>Museum Geologi</h4>
+                        <p>Kode: BWG001233</p>
+                        <p>Tanggal: 10 Desember 2024</p>
+                        <p>3 orang</p>
+                    </div>
+                    <div class="history-status">
+                        <span class="status completed">Selesai</span>
+                        <div class="history-total">Rp 45.000</div>
+                    </div>
+                    <div class="history-actions">
+                        <button class="btn-small" onclick="downloadTicket('BWG001233')">Download</button>
+                        <button class="btn-small" onclick="rateExperience('BWG001233')">Beri Rating</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Added Login/Register Modal -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <div class="auth-header">
+                <h2 id="auth-title">Masuk ke Akun Anda</h2>
+                <button class="close-auth" onclick="closeAuthModal()">×</button>
+            </div>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login" onclick="switchAuthTab('login')">
+                    Masuk
+                </button>
+                <button class="auth-tab" data-tab="register" onclick="switchAuthTab('register')">
+                    Daftar
+                </button>
+            </div>
+            
+            <div class="auth-body">
+                 Login Form 
+                <div id="login-form" class="auth-form active">
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="login-email" placeholder="Masukkan email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="password-input">
+                                <input type="password" id="login-password" placeholder="Masukkan password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('login-password')">
+                                    👁️
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember-me">
+                                <span class="checkmark"></span>
+                                Ingat saya
+                            </label>
+                            <a href="#" class="forgot-password" onclick="showForgotPassword()">
+                                Lupa password?
+                            </a>
+                        </div>
+                        <button type="submit" class="auth-btn primary">
+                            🔐 Masuk
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>atau masuk dengan</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="social-btn google" onclick="loginWithGoogle()">
+                            <span class="social-icon">🔍</span>
+                            Google
+                        </button>
+                        <button class="social-btn facebook" onclick="loginWithFacebook()">
+                            <span class="social-icon">📘</span>
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+                
+                 Register Form 
+                <div id="register-form" class="auth-form">
+                    <form onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" id="register-name" placeholder="Masukkan nama lengkap" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="register-email" placeholder="Masukkan email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telepon</label>
+                            <input type="tel" id="register-phone" placeholder="08xxxxxxxxxx" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="password-input">
+                                <input type="password" id="register-password" placeholder="Minimal 8 karakter" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('register-password')">
+                                    👁️
+                                </button>
+                            </div>
+                            <div class="password-strength" id="password-strength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill"></div>
+                                </div>
+                                <span class="strength-text">Lemah</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Konfirmasi Password</label>
+                            <div class="password-input">
+                                <input type="password" id="register-confirm-password" placeholder="Ulangi password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('register-confirm-password')">
+                                    👁️
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agree-terms" required>
+                                <span class="checkmark"></span>
+                                Saya setuju dengan <a href="#" onclick="showTerms()">Syarat & Ketentuan</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="auth-btn primary">
+                            ✨ Daftar Sekarang
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>atau daftar dengan</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="social-btn google" onclick="registerWithGoogle()">
+                            <span class="social-icon">🔍</span>
+                            Google
+                        </button>
+                        <button class="social-btn facebook" onclick="registerWithFacebook()">
+                            <span class="social-icon">📘</span>
+                            Facebook
+                        </button>
+                    </div>
+                </div>
+                
+                 Forgot Password Form 
+                <div id="forgot-password-form" class="auth-form">
+                    <div class="forgot-password-content">
+                        <div class="forgot-icon">🔑</div>
+                        <h3>Lupa Password?</h3>
+                        <p>Masukkan email Anda dan kami akan mengirimkan link untuk reset password.</p>
+                        
+                        <form onsubmit="handleForgotPassword(event)">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="forgot-email" placeholder="Masukkan email Anda" required>
+                            </div>
+                            <button type="submit" class="auth-btn primary">
+                                📧 Kirim Link Reset
+                            </button>
+                        </form>
+                        
+                        <button class="auth-btn secondary" onclick="switchAuthTab('login')">
+                            ← Kembali ke Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Added User Settings Modal -->
+    <div id="settings-modal" class="auth-modal">
+        <div class="auth-modal-content">
+            <div class="auth-header">
+                <h2>Pengaturan Akun</h2>
+                <button class="close-auth" onclick="closeSettingsModal()">×</button>
+            </div>
+            
+            <div class="settings-tabs">
+                <button class="settings-tab active" data-tab="profile" onclick="switchSettingsTab('profile')">
+                    Profil
+                </button>
+                <button class="settings-tab" data-tab="security" onclick="switchSettingsTab('security')">
+                    Keamanan
+                </button>
+                <button class="settings-tab" data-tab="preferences" onclick="switchSettingsTab('preferences')">
+                    Preferensi
+                </button>
+            </div>
+            
+            <div class="settings-body">
+                 Profile Settings 
+                <div id="profile-settings" class="settings-form active">
+                    <form onsubmit="updateProfile(event)">
+                        <div class="profile-avatar-section">
+                            <div class="avatar-preview">
+                                <span id="settings-avatar-text">U</span>
+                            </div>
+                            <div class="avatar-actions">
+                                <button type="button" class="btn-small" onclick="changeAvatar()">
+                                    Ubah Foto
+                                </button>
+                                <button type="button" class="btn-small secondary" onclick="removeAvatar()">
+                                    Hapus
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" id="settings-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="settings-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telepon</label>
+                            <input type="tel" id="settings-phone">
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Lahir</label>
+                            <input type="date" id="settings-birthdate">
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <textarea id="settings-address" rows="3" placeholder="Alamat lengkap"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="auth-btn primary">
+                            💾 Simpan Perubahan
+                        </button>
+                    </form>
+                </div>
+                
+                 Security Settings 
+                <div id="security-settings" class="settings-form">
+                    <form onsubmit="changePassword(event)">
+                        <h4>Ubah Password</h4>
+                        <div class="form-group">
+                            <label>Password Lama</label>
+                            <div class="password-input">
+                                <input type="password" id="current-password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('current-password')">
+                                    👁️
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password Baru</label>
+                            <div class="password-input">
+                                <input type="password" id="new-password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('new-password')">
+                                    👁️
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Konfirmasi Password Baru</label>
+                            <div class="password-input">
+                                <input type="password" id="confirm-new-password" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('confirm-new-password')">
+                                    👁️
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="auth-btn primary">
+                            🔐 Ubah Password
+                        </button>
+                    </form>
+                    
+                    <div class="security-options">
+                        <h4>Opsi Keamanan</h4>
+                        <div class="security-option">
+                            <div class="option-info">
+                                <strong>Autentikasi Dua Faktor</strong>
+                                <p>Tambahkan lapisan keamanan ekstra untuk akun Anda</p>
+                            </div>
+                            <button class="btn-small" onclick="setup2FA()">
+                                Aktifkan
+                            </button>
+                        </div>
+                        <div class="security-option">
+                            <div class="option-info">
+                                <strong>Sesi Login</strong>
+                                <p>Kelola perangkat yang terhubung ke akun Anda</p>
+                            </div>
+                            <button class="btn-small" onclick="manageSessions()">
+                                Kelola
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                 Preferences Settings 
+                <div id="preferences-settings" class="settings-form">
+                    <form onsubmit="updatePreferences(event)">
+                        <h4>Notifikasi</h4>
+                        <div class="preference-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="email-notifications" checked>
+                                <span class="checkmark"></span>
+                                Notifikasi Email
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="booking-notifications" checked>
+                                <span class="checkmark"></span>
+                                Notifikasi Pemesanan
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="promo-notifications">
+                                <span class="checkmark"></span>
+                                Notifikasi Promo
+                            </label>
+                        </div>
+                        
+                        <h4>Tampilan</h4>
+                        <div class="preference-group">
+                            <div class="form-group">
+                                <label>Tema Favorit</label>
+                                <select id="favorite-theme">
+                                    <option value="default">Default</option>
+                                    <option value="alam">Alam</option>
+                                    <option value="budaya">Budaya</option>
+                                    <option value="rekreasi">Rekreasi</option>
+                                    <option value="kuliner">Kuliner</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Bahasa</label>
+                                <select id="language">
+                                    <option value="id">Bahasa Indonesia</option>
+                                    <option value="en">English</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="auth-btn primary">
+                            💾 Simpan Preferensi
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder@2.4.0/dist/Control.Geocoder.js"></script>
+    <script src="2script.js"></script>
+</body>
+</html>
 
