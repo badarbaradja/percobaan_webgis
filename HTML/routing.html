@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGIS Routing - Bandung</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- RemixIcon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="routing.css">
+</head>
+<body>
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Category Filter Tabs -->
+    <div class="category-tabs">
+        <button class="tab-btn active" data-category="all" onclick="filterCategory('all')">
+            <i class="ri-apps-line"></i>
+            <span>Semua</span>
+        </button>
+        <button class="tab-btn" data-category="nature" onclick="filterCategory('nature')">
+            <i class="ri-leaf-line"></i>
+            <span>Alam</span>
+        </button>
+        <button class="tab-btn" data-category="culture" onclick="filterCategory('culture')">
+            <i class="ri-ancient-pavilion-line"></i>
+            <span>Budaya</span>
+        </button>
+        <button class="tab-btn" data-category="culinary" onclick="filterCategory('culinary')">
+            <i class="ri-restaurant-line"></i>
+            <span>Kuliner</span>
+        </button>
+        <button class="tab-btn" data-category="recreation" onclick="filterCategory('recreation')">
+            <i class="ri-emotion-happy-line"></i>
+            <span>Rekreasi</span>
+        </button>
+    </div>
+
+    <!-- Search Container -->
+    <div class="search-container" id="searchContainer">
+        <div class="search-input-wrapper">
+            <button class="menu-btn" onclick="openRoutingPanel()">
+                <i class="ri-menu-line"></i>
+            </button>
+            <input 
+                type="text" 
+                class="search-input" 
+                id="searchInput" 
+                placeholder="Cari tempat wisata..."
+                autocomplete="off"
+            >
+            <button class="menu-btn">
+                <i class="ri-search-line"></i>
+            </button>
+        </div>
+        <div class="suggestions-list" id="searchSuggestions"></div>
+    </div>
+
+    <!-- Routing Panel -->
+    <div class="routing-panel" id="routingPanel">
+        <div class="panel-header">
+            <button class="back-btn" onclick="closeRoutingPanel()">
+                <i class="ri-arrow-left-line"></i>
+            </button>
+            <span class="panel-title">Rute & Navigasi</span>
+        </div>
+
+        <div class="route-inputs-container">
+            <div class="route-input-wrapper">
+                <div class="route-marker start">
+                    <i class="ri-record-circle-fill"></i>
+                </div>
+                <input 
+                    type="text" 
+                    class="route-input" 
+                    id="startInput" 
+                    placeholder="Lokasi awal"
+                    autocomplete="off"
+                >
+                <button class="input-action-btn" onclick="useCurrentLocation()" title="Gunakan lokasi saya">
+                    <i class="ri-crosshair-2-line"></i>
+                </button>
+            </div>
+            
+            <button class="swap-btn" onclick="swapLocations()" title="Tukar lokasi">
+                <i class="ri-arrow-up-down-line"></i>
+            </button>
+
+            <div class="route-input-wrapper">
+                <div class="route-marker end">
+                    <i class="ri-map-pin-fill"></i>
+                </div>
+                <input 
+                    type="text" 
+                    class="route-input" 
+                    id="endInput" 
+                    placeholder="Pilih tujuan"
+                    autocomplete="off"
+                >
+                <button class="input-action-btn" onclick="clearDestination()" title="Hapus tujuan">
+                    <i class="ri-close-circle-fill"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="suggestions-list" id="startSuggestions"></div>
+        <div class="suggestions-list" id="endSuggestions"></div>
+
+        <div class="transport-modes">
+            <button class="mode-btn active" data-mode="car" onclick="selectMode('car')">
+                <i class="ri-car-fill"></i>
+                <span>Mobil</span>
+            </button>
+            <button class="mode-btn" data-mode="foot" onclick="selectMode('foot')">
+                <i class="ri-walk-fill"></i>
+                <span>Jalan</span>
+            </button>
+            <button class="mode-btn" data-mode="bike" onclick="selectMode('bike')">
+                <i class="ri-bike-fill"></i>
+                <span>Sepeda</span>
+            </button>
+        </div>
+
+        <div class="route-summary" id="routeSummary">
+            <div class="summary-main">
+                <div class="summary-icon">
+                    <i class="ri-navigation-fill"></i>
+                </div>
+                <div class="summary-info">
+                    <div class="summary-time" id="summaryTime">-</div>
+                    <div class="summary-distance" id="summaryDistance">-</div>
+                </div>
+            </div>
+            <div class="summary-details">
+                <div class="summary-detail">
+                    <div class="summary-detail-value" id="summaryKm">-</div>
+                    <div class="summary-detail-label">Kilometer</div>
+                </div>
+                <div class="summary-detail">
+                    <div class="summary-detail-value" id="summaryEta">-</div>
+                    <div class="summary-detail-label">Estimasi Tiba</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="calculateRoute()">
+                <i class="ri-navigation-line"></i>
+                <span>Mulai Navigasi</span>
+            </button>
+            <button class="btn btn-secondary" onclick="toggleDirections()" style="display: none;" id="directionsBtn">
+                <i class="ri-list-check"></i>
+            </button>
+        </div>
+
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <div class="loading-text">Mencari rute terbaik...</div>
+        </div>
+
+        <div class="directions-container" id="directionsContainer"></div>
+    </div>
+
+    <!-- Layer Switcher -->
+    <div class="layer-switcher">
+        <button class="layer-btn" onclick="toggleLayerMenu()">
+            <i class="ri-map-fill"></i>
+        </button>
+
+        <div class="layer-menu" id="layerMenu">
+            <div class="layer-option opt-default active" onclick="changeLayer('default')">
+                <i class="ri-map-fill"></i>
+                <span>Default</span>
+            </div>
+            
+            <div class="layer-option opt-satellite" onclick="changeLayer('satellite')">
+                <i class="ri-earth-fill"></i>
+                <span>Satelit</span>
+            </div>
+            
+            <div class="layer-option opt-dark" onclick="changeLayer('dark')">
+                <i class="ri-moon-fill"></i>
+                <span>Gelap</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Controls -->
+    <div class="map-controls">
+        <button class="map-control-btn" onclick="toggleFullscreen()" title="Fullscreen">
+            <i class="ri-fullscreen-line" id="fullscreenIcon"></i>
+        </button>
+        
+        <button class="map-control-btn" onclick="zoomIn()" title="Zoom In">
+            <i class="ri-add-line"></i>
+        </button>
+        <button class="map-control-btn" onclick="zoomOut()" title="Zoom Out">
+            <i class="ri-subtract-line"></i>
+        </button>
+        <button class="map-control-btn" onclick="recenterMap()" title="Lokasi Saya">
+            <i class="ri-focus-3-line"></i>
+        </button>
+    </div>
+
+    <!-- Debug Panel (Tekan Ctrl+D) -->
+    <div class="debug-panel" id="debugPanel">
+        <div style="font-weight: bold; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <span>🔍 Debug Info</span>
+            <button onclick="toggleDebug()" style="background: none; border: none; color: #fff; cursor: pointer; font-size: 16px;">✕</button>
+        </div>
+        <div id="debugInfo"></div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner-large"></div>
+        <div class="loading-text-large">Memuat peta...</div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="routing.js"></script>
+</body>
+</html>

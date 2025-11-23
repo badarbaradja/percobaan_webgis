@@ -1,0 +1,892 @@
+{
+  "type": "FeatureCollection",
+  "name": "Lokasi_Kuliner_Lengkap",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Batagor Riri",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Burangrang No.41",
+        "Kelurahan/Kampung": "Malabar",
+        "Kecamatan": "Lengkong",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40262",
+        "Kontak": "",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwIRz1VsQ7VKRNnOz2lnJbqgsS9QnjxUlg5g&s"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6193702,
+          -6.9276297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Batagor Kingsley",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Veteran No.25",
+        "Kelurahan/Kampung": "Kb. Pisang",
+        "Kecamatan": "Sumur Bandung",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40112",
+        "Kontak": "",
+        "gambar": "https://images.tokopedia.net/img/cache/1500/product-1/2018/9/14/78960/78960_447a7282-5d13-400e-8f79-78ff1faaea7b_554_554.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6151726,
+          -6.9191781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Martabak Mertua Kopo",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Raya Taman Kopo Indah 2 No.68",
+        "Kelurahan/Kampung": "Rahayu",
+        "Kecamatan": "Margaasih",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40218",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noleBdXwLOG7R-teILfAiiO0--3EQTHLeH921YwAsSEMd-7CZLmNKafBarj04w05Ytbe9fG-BMKdUmvFyeqSrY5uyhy726pbH9xdZkvxm1Soe-w1OWWKjCjFmAgg8e7ipYhmWPv=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5584183,
+          -6.9538114
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Martabak Legit Sukamenak",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cangkuang No.73-81",
+        "Kelurahan/Kampung": "Sayati",
+        "Kecamatan": "Margahayu",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40228",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqdXVQRNAVDxvk05-l-AWAKY8BMMczGs7A2cxU4V4pbIIpZ0VfKJfzTHEQ-c15COeOh1yFQ1oRT1zQWPLB-nxb0rJd39k1FRWtJSYAMUQQ5A4qk7o7-8xqWFJGnpF6ZRkwuAGWooQ=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5763646,
+          -6.9710588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Ayam Sari Rasa 3",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Anggrek No.59",
+        "Kelurahan/Kampung": "Merdeka",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nonm8SCOExw8uW9Gn49JoM8kQnnLFcUzEU5cjYfatblFsIqgfGatrii1E2LYKkbwL3GhQnmFb97RhB7xoVGHxcbDBpCmmezw7re44rDDNAW_kR0eBbVG_SxKEeKFQ_AqHTxE0zvJKH5wrv9=w289-h312-n-k-no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6302532,
+          -6.9105451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Toko Bubur Dibawah Pohon Rindang Cibeunying",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Taman Cibeunying Utara No.24",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://i0.wp.com/madhang.com/wp-content/uploads/Toko-Bubur-DPR-Bandung.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6242015,
+          -6.9043504
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Tjuankie Stasion",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Kebon Kawung No.6",
+        "Kelurahan/Kampung": "Pasir Kaliki",
+        "Kecamatan": "Cicendo",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40171",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/StreetFood/Image_WisataBandung/tjuankiestasion/1cuanki.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5989774,
+          -6.9124314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Nasi Lemak & Kupi Tarik Sinar Asia",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Lombok No.3",
+        "Kelurahan/Kampung": "Merdeka",
+        "Kecamatan": "Sumur Bandung",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40113",
+        "Kontak": "",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlXkJx0x91UyMHWq1oXIn2ARQUceUwVzhrSA&s"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6181777,
+          -6.9112786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Lontong Cibadak",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cibadak No.8",
+        "Kelurahan/Kampung": "Karanganyar",
+        "Kecamatan": "Astanaanyar",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40241",
+        "Kontak": "",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoU2BG3KyAlwgUIzp9CO2zSTC4F-gdgRPdoQ&s"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6033508,
+          -6.9219175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Bebek Ali Borme Cimahi",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Gatot Subroto No.23",
+        "Kelurahan/Kampung": "Karangmekar",
+        "Kecamatan": "Cimahi Tengah",
+        "Kabupaten/Kota": "Kota Cimahi",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40523",
+        "Kontak": "",
+        "gambar": "https://i.ytimg.com/vi/uIkvcx4mn1E/maxresdefault.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5448263,
+          -6.8777305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Ayam Asin Cihapit",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cihapit No.45",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://i.ytimg.com/vi/6eP63IzPeeM/maxresdefault.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6240266,
+          -6.9066299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "TJI LAKI 9 | TOKO BOLU & KUE",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cilaki No.9",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40115",
+        "Kontak": "",
+        "gambar": "https://bolulembang.co.id/wp-content/uploads/2024/06/Snapinsta.app_441639804_301019396384916_6314507892802062179_n_1024.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6286091,
+          -6.9068115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "BAGELICIOUS®",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. L. L. R.E. Martadinata No.71",
+        "Kelurahan/Kampung": "Citarum",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40115",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/p/AF1QipP1ryNiUqh6GZ4BdJEVGu1ytIHQz48iXl6HeLbz=w289-h312-n-k-no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6156365,
+          -6.9057157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Kopi Moyan",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Anggrek No.30",
+        "Kelurahan/Kampung": "Merdeka",
+        "Kecamatan": "Sumur Bandung",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40113",
+        "Kontak": "",
+        "gambar": "https://awsimages.detik.net.id/community/media/visual/2023/11/13/kopi-moyan-di-bandung_169.jpeg?w=1200"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6251897,
+          -6.9135196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Djaya Mandiri Sejahtera",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Nanas No.27",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/StreetFood/Image_WisataBandung/djayamandiri/1djaya.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6314936,
+          -6.9124803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Zeng Noodle Bar",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Dipati Ukur No.29",
+        "Kelurahan/Kampung": "Lebakgede",
+        "Kecamatan": "Coblong",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40132",
+        "Kontak": "",
+        "gambar": "https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/a7bd7dab-54fa-43f6-9206-1f984a863f03_Go-Biz_20221207_114714.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6164634,
+          -6.8954164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Kapulaga Indonesian Bistro",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Dayang Sumbi No.3",
+        "Kelurahan/Kampung": "Lb. Siliwangi",
+        "Kecamatan": "Coblong",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40132",
+        "Kontak": "",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxgnaeasj5EM0rlLUggmXlh0z5lkdeN6s37A&s"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6121775,
+          -6.8877778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Laoban by Uncle Osh Bandung",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Kalipah Apo No.83",
+        "Kelurahan/Kampung": "Karanganyar",
+        "Kecamatan": "Astanaanyar",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40241",
+        "Kontak": "",
+        "gambar": "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/1071/2024/12/12/IMG-20241212-WA0097-1988307828.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5992472,
+          -6.9233317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "BBQ Mountain Boys Burger",
+        "Kategori": "Kuliner",
+        "Jalan": "Paskal Hyper Square, The Tripark",
+        "Kelurahan/Kampung": "",
+        "Kecamatan": "Andir",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40181",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/StreetFood/Image_WisataBandung/bbqmountainboys/1bbq.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5918255,
+          -6.9143996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Fit Fuel Salad & Smoothie Bar",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Maulana Yusuf No.2",
+        "Kelurahan/Kampung": "Citarum",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40115",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqk4wgTRTQ47KM272ZjHh6LP5pzU5-dd-DUu1jAxeshfLjmegUPw8sznAwJg86y_r0Pu7cCC89T7c-eS1aL1vhO_SsJQKFzZQH0sKSoGJBQ9418N3-duw8fEBnxHThngYVOjPYKGdbI2_En=w289-h312-n-k-no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6127543,
+          -6.9021622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Drunk Baker Cihapit",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cihapit No.10",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np7jxf22bjcoEuyo3jHSzcSNRkv7R0FnMt4ix-qp3yno1iGieBvm7OSaD5cNswxaLeJv7PnxmFwrOuxusfmjXbffmtOCJ2jL7tXhOdzubrprVHzbTeyFDjBDHinLaVcf2XQgYvDSKz_ha7f=w289-h312-n-k-no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6216847,
+          -6.9081778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Lengkong Night Street Food",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Lengkong Kecil",
+        "Kelurahan/Kampung": "Paledang",
+        "Kecamatan": "Lengkong",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40261",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npoJ_MjXqhDfuCo0yEzBQpdtM7MmjiEc7wSyrGz--7MDfQ1yxkbSFsBo25ejhfurhz2N-FAqEx9-w83bPAe6_pV9OHJkr1VWA1lUsorLPYqCO5qyVfoeX5wEvkC4k7IWEO1w3cyuNYqfSRc=w289-h312-n-k-no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6146587,
+          -6.9237589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Sudirman Street Day and Night Market",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Jend. Sudirman No.107",
+        "Kelurahan/Kampung": "Karanganyar",
+        "Kecamatan": "Astanaanyar",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40241",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/p/AF1QipOkJ8nAo0CshVCCULO4QT3anbnvR9JQg3f4yGKK=w289-h312-n-k-no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5995945,
+          -6.9204361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Perkedel Bondon Asli",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Stasiun Timur No.26",
+        "Kelurahan/Kampung": "Kb. Jeruk",
+        "Kecamatan": "Andir",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40181",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqkhbQz7m6haOSvXbmunEZieZOI5oGCvsZssesby57Pv_fNvf6gOwFwrCHsbwx9hJP6Xnk04I8h17gGUt4d-DMlwNjjv0cjfG_VOpNxTXhjhF3PBUsUmAIMHTKzVEc5dlFpff0=w165-h118-n-k-no-nu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6012262,
+          -6.9156153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Kuliner Malam Cibadak",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cibadak No.50-155",
+        "Kelurahan/Kampung": "Cibadak",
+        "Kecamatan": "Astanaanyar",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40241",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrPQJv5xQSpCqO-ClGGtTDvbbmdVdjhZ0AG6PB1F939H1p4nancbHUkUzebnxGl43jX665uy6lFswMsVJJSXs71cg-CDXsgAMbgEulv5ffrMAcuMs-Ye_HEyXLFYb0YyE1mekiXjg=w165-h276-n-k-no-nu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6001938,
+          -6.9217046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Goodwheel Companion",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Badak Singa No.15",
+        "Kelurahan/Kampung": "Lb. Siliwangi",
+        "Kecamatan": "Coblong",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40132",
+        "Kontak": "",
+        "gambar": "https://media.indozone.id/crop/photo/p2/95/2024/05/19/WhatsApp-Image-2024-05-19-at-083118-2541057559.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6085167,
+          -6.8971603
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Bungkushin Cihapit",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cihapit No.8B",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/p/AF1QipMfefXm2AfBMzKRsOnmsbidNqaSC8UpAMmVCmS2=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6191844,
+          -6.9082593
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Rumah Makan Wangi Seruni",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cimanuk No.42",
+        "Kelurahan/Kampung": "Citarum",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40115",
+        "Kontak": "",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWmAxl4BbyMqrBHNRhEm7uYIqjSMF4POCfTw&s"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6221754,
+          -6.9024935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Bakmie Gang Luna",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Jend. Sudirman Jl. Luna IV No.2",
+        "Kelurahan/Kampung": "Cibadak",
+        "Kecamatan": "Astanaanyar",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40241",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no4XkGB9rgC3EShf_eJzXpza8ObpE7Rtc1gZVVU_ybDUaNgFKoOC4l0zWLYwpbZPjjl9J2DmuAZx57A6Nc2mY4vZimLiwrje3o3bEQk5OJPrXeHcggDX5SpEZG6Ntybsmv4gkI0VaRrO48f=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5882885,
+          -6.9195941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Rempha",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Bangka No.6",
+        "Kelurahan/Kampung": "Merdeka",
+        "Kecamatan": "Sumur Bandung",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40113",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nral9stF2WklRp2GwZTDN-0IJ7Pd_rA_9zho3rfi0Cn1IjeIQ62iUUsXBnQu73pk2WN4U0v36aUI01mdRUKHEsTR7M6QctR_uVBWelCiCgf6Hq_WSbJcbzsPYNEvU4tjhO2mp2x=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6165215,
+          -6.9145619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Dough Deli",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cendana No.3",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/p/AF1QipMLgtRGK5UVc_fwe9uV8XdVPScqnK0CGFi-KwBx=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6265476,
+          -6.9092363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Bakso Bintang Asia",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Sabang No.63",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqdMxLrwVKwz1hPJWD01XDMisgkjR_Ske5t_9-qdqzTH671IZHj2tnPhSJxzvZN0lc77n6xbFNrqdDULtzoR6pVqqAABU0BkJgxYp4oNHUZhT_qO-Cz_SVwqQ2ahL7nRE_HkwazooWiYpWn=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6200769,
+          -6.9078334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Musouya",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Hegarmanah No.2",
+        "Kelurahan/Kampung": "Hegarmanah",
+        "Kecamatan": "Cidadap",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40141",
+        "Kontak": "",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT_vg08LhUsTfqoFPJkxpTxU2oA0swVozWtQ&s"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5999303,
+          -6.8825713
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Smith Steak",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Bengawan No.5",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npCmhCPqS2HJLGsQc6sLiKxQUJ0trQpM2_XJ4Gw53_9drvdNYAL-jC-Xtnv8lxm43nDQWYgHXiHUkXZ04JOBurPawavCqplPrWHbWX97j8QqFSxfw9ZayrlHYr2FCkpoOvIQE5iCPQtgU3o=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6322793,
+          -6.9129764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Ton Kedai",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Cisadea No.26",
+        "Kelurahan/Kampung": "Sukamaju",
+        "Kecamatan": "Cibeunying Kidul",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40275",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npD8F3OcFSppRpHFTvkdRbxBLHwEM1APv72Bw2V9O9OUvx_8cUFTKuFdLZ9RNixprb11MPpAlAxnGoiv7f1kh1O5OiZtQHOrw3WIqbA0GvMkVLSH0V-z5mjxrIdxyIDB2rwsrRzdQ=w289-h312-n-k-no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6320105,
+          -6.9076397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Rasa Bakery & Café",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Tamblong No.15",
+        "Kelurahan/Kampung": "Braga",
+        "Kecamatan": "Sumur Bandung",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40111",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrF5WtvQ8t1umuhDadn1E-yU32pFekRo3VhuzaQECe253eC8zkL0lij24X4ZmllcOyg6SeKIxQ0MTL8MsWXJZPh9AyL0X-3ZsHw7vf9ckJzwPEmtpgKCMoF8glHLkxifOvTgp5O=w165-h207-n-k-no-nu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6095877,
+          -6.9189658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Sop Buntut Sapi Hj. Ine",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. A. Yani No.29b, RT.001/RW.002",
+        "Kelurahan/Kampung": "Kb. Pisang",
+        "Kecamatan": "Sumur Bandung",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40112",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no7jmjqvfdp2xCtMLfuAV7Cq7zVof-M8NYtsPTzpHHlyDsGL1tWcnWR8YxNgibN6t8DOGHqqAAENqZN7_59eMsAhKx_SzTs1xlgJwz91Im4ztTd2GfcESBrYZsd-lWI2g92lk0=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6175048,
+          -6.9215489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Sop Konro Marannu",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. L. L. R.E. Martadinata No.189",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40113",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no7jmjqvfdp2xCtMLfuAV7Cq7zVof-M8NYtsPTzpHHlyDsGL1tWcnWR8YxNgibN6t8DOGHqqAAENqZN7_59eMsAhKx_SzTs1xlgJwz91Im4ztTd2GfcESBrYZsd-lWI2g92lk0=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6275032,
+          -6.9114136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Kambing Bakar Cairo",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. L. L. R.E. Martadinata No.121",
+        "Kelurahan/Kampung": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40114",
+        "Kontak": "",
+        "gambar": "https://i.gojekapi.com/darkroom/gofood-indonesia/v2/images/uploads/78fd5fdc-04af-4565-a153-5cfa3992791d_Go-Biz_20220212_204439.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6231334,
+          -6.9071317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Nama": "Warung Kopi Purnama",
+        "Kategori": "Kuliner",
+        "Jalan": "Jl. Alkateri No.22",
+        "Kelurahan/Kampung": "Braga",
+        "Kecamatan": "Sumur Bandung",
+        "Kabupaten/Kota": "Kota Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kodepos": "40111",
+        "Kontak": "",
+        "gambar": "https://awsimages.detik.net.id/community/media/visual/2022/05/25/salah-satu-kopi-legendaris-kedai-kopi-purnama-bandung-di-jalan-alkateri-3_169.jpeg?w=1200"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6026811,
+          -6.9200122
+        ]
+      }
+    }
+  ]
+}

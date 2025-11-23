@@ -1,0 +1,558 @@
+{
+  "type": "FeatureCollection",
+  "name": "Lokasi_Budaya_Lengkap",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 1,
+        "Nama": "Museum Konferensi Asia Afrika",
+        "Kategori": "Museum",
+        "Jalan": "Jl. Asia Afrika No.65",
+        "Desa/Kelurahan": "Braga",
+        "Kecamatan": "Sumur Bandung",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Budaya/Asia-Afrika_Budaya.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.609417,
+          -6.921289
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 2,
+        "Nama": "Gedung Sate",
+        "Kategori": "Gedung Sejarah",
+        "Jalan": "Jl. Diponegoro No.22",
+        "Desa/Kelurahan": "Citarum",
+        "Kecamatan": "Bandung Wetan",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Budaya/GedungSate_Budaya.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.61872,
+          -6.901936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 3,
+        "Nama": "Saung Angklung Udjo",
+        "Kategori": "Saung Seni",
+        "Jalan": "Jl. Padasuka No.118",
+        "Desa/Kelurahan": "Pasirlayung",
+        "Kecamatan": "Cibeunying Kidul",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Budaya/saungudjo_Budaya.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.654686,
+          -6.8977
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 4,
+        "Nama": "Museum Geologi Bandung",
+        "Kategori": "Museum",
+        "Jalan": "Jl. Diponegoro No.57",
+        "Desa/Kelurahan": "Cihaur Geulis",
+        "Kecamatan": "Cibeunying Kaler",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Budaya/MuseumGeologi_Budaya.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.621456,
+          -6.900717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 5,
+        "Nama": "Museum Sri Baduga",
+        "Kategori": "Museum",
+        "Jalan": "Jl. BKR No.185",
+        "Desa/Kelurahan": "Pelindung Hewan",
+        "Kecamatan": "Astanaanyar",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Budaya/MuseumSriBaduga_Bandung.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.603489,
+          -6.937644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 6,
+        "Nama": "Gedung Indonesia Menggugat",
+        "Kategori": "Cagar Budaya",
+        "Jalan": "Jl. Perintis Kemerdekaan No.5",
+        "Desa/Kelurahan": "Babakan Ciamis",
+        "Kecamatan": "Sumur Bandung",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Budaya/GedungIndonesiaMenggugat_Budaya.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.608022,
+          -6.913536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 7,
+        "Nama": "NuArt Sculpture Park",
+        "Kategori": "Taman Budaya",
+        "Jalan": "Jl. Setra Duta Raya No.L6",
+        "Desa/Kelurahan": "Ciwaruga",
+        "Kecamatan": "Parongpong",
+        "Kota/Kabupaten": "Kab. Bandung Barat",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Budaya/NuArt_Budaya.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.572289,
+          -6.8777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 8,
+        "Nama": "Taman Budaya Jawa Barat",
+        "Kategori": "Taman Budaya",
+        "Jalan": "Jl. Bukit Dago Selatan No.53A",
+        "Desa/Kelurahan": "Dago",
+        "Kecamatan": "Coblong",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://www.metrum.id/wp-content/uploads/2025/03/dsc00150-001-1-scaled.jpg" 
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.619217,
+          -6.869453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 9,
+        "Nama": "Jalan Braga",
+        "Kategori": "Kawasan Sejarah",
+        "Jalan": "Jl. Braga",
+        "Desa/Kelurahan": "Braga",
+        "Kecamatan": "Sumur Bandung",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Budaya/JalanBraga_Budaya.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.609436,
+          -6.917823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 10,
+        "Nama": "Museum Pos Indonesia",
+        "Kategori": "Museum",
+        "Jalan": "Jl. Cilaki No.73",
+        "Desa/Kelurahan": "Cihapit",
+        "Kecamatan": "Bandung Wetan",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://upload.wikimedia.org/wikipedia/commons/1/11/Kantor_Pusat_Pos_Indonesia.JPG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.619745,
+          -6.902061
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 11,
+        "Nama": "Kampung Adat Cireundeu",
+        "Kategori": "Kampung Adat",
+        "Jalan": "",
+        "Desa/Kelurahan": "Cireundeu",
+        "Kecamatan": "Leuwigajah",
+        "Kota/Kabupaten": "Kota Cimahi",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np09NEF9ybs2F_MnvA9xZuNmRYT0jQqba5yORb0ys8WzIkOqM2mM4SeWdc8ArhY0VAvN4SFQBOQwq3gYBGgGd4_gt512tOLj-ERvLDC2eN48wuJ8NK97vy_bj7qmaJT4IXwginE=w270-h312-n-k-no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.523423,
+          -6.914281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 12,
+        "Nama": "Selasar Sunaryo Art Space",
+        "Kategori": "Galeri Seni",
+        "Jalan": "Jl. Bukit Pakar Timur No.100",
+        "Desa/Kelurahan": "Ciburial",
+        "Kecamatan": "Cimenyan",
+        "Kota/Kabupaten": "Kab. Bandung",
+        "Kontak": "",
+        "gambar": "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/79/2024/08/22/IMG_4029-1880028822.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.636541,
+          -6.858714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 13,
+        "Nama": "Rumah Inggit Garnasih",
+        "Kategori": "Cagar Budaya",
+        "Jalan": "Jl. Inggit Garnasih No.8",
+        "Desa/Kelurahan": "Nyengseret",
+        "Kecamatan": "Astanaanyar",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://asset-2.tribunnews.com/jabar/foto/bank/images/rumah-Inggit-2362023-a.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.602497,
+          -6.931478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 14,
+        "Nama": "Villa Isola (Bumi Siliwangi)",
+        "Kategori": "Gedung Sejarah",
+        "Jalan": "Jl. Dr. Setiabudi No.229",
+        "Desa/Kelurahan": "Isola",
+        "Kecamatan": "Sukasari",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://asset.kompas.com/crops/UaIT4tYP8ULwz8z7qd9SwByVMZg=/78x22:1108x709/1200x800/data/photo/2023/10/12/6527db160152e.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.594333,
+          -6.8611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 15,
+        "Nama": "Stasiun Bandung (Hall Selatan)",
+        "Kategori": "Gedung Sejarah",
+        "Jalan": "Jl. Stasiun Timur No.1",
+        "Desa/Kelurahan": "Kebonjeruk",
+        "Kecamatan": "Andir",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://upload.wikimedia.org/wikipedia/commons/4/45/Stasiun_Bandung_Selatan_2021.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.602433,
+          -6.914789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 16,
+        "Nama": "Gedung De Vries",
+        "Kategori": "Cagar Budaya",
+        "Jalan": "Jl. Asia Afrika",
+        "Desa/Kelurahan": "Alun-alun",
+        "Kecamatan": "Sumur Bandung",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-jPH0kJi7i8j4TgswPpUAR1W5Iti2xD3-bQ&s"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.609689,
+          -6.92157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 17,
+        "Nama": "Masjid Cipaganti",
+        "Kategori": "Tempat Ibadah",
+        "Jalan": "Jl. Raden AA Wiranatakusumah No.85",
+        "Desa/Kelurahan": "Cipaganti",
+        "Kecamatan": "Coblong",
+        "Kota/Kabupaten": "",
+        "Kontak": "",
+        "gambar": "https://suakaonline.com/wp-content/uploads/2016/06/masjid-cipaganti.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.60235,
+          -6.894652
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 18,
+        "Nama": "Gereja Katedral Santo Petrus",
+        "Kategori": "Tempat Ibadah",
+        "Jalan": "Jl. Merdeka No.14",
+        "Desa/Kelurahan": "Babakan Ciamis",
+        "Kecamatan": "Sumur Bandung",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://asset.kompas.com/crops/atR34thmCdAi39c3dTQ_JUqfhLo=/147x0:1225x719/1200x800/data/photo/2022/11/14/63725de4b9231.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6105,
+          -6.914792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 19,
+        "Nama": "Vihara Satya Budhi",
+        "Kategori": "Tempat Ibadah",
+        "Jalan": "Jl. Kelenteng No.10",
+        "Desa/Kelurahan": "Ciroyom",
+        "Kecamatan": "Andir",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://teropongmedia.id/wp-content/uploads/2024/02/Vihara-Satya-Budhi.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.592642,
+          -6.917961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 20,
+        "Nama": "Goa Belanda & Goa Jepang",
+        "Kategori": "Situs Sejarah",
+        "Jalan": "Taman Hutan Raya Ir. H. Djuanda No.99",
+        "Desa/Kelurahan": "Dago",
+        "Kecamatan": "",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://images.tokopedia.net/blog-tokopedia-com/uploads/2016/11/goa-belanda-700x500.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.635322,
+          -6.855483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 21,
+        "Nama": "Bandung Creative Hub",
+        "Kategori": "Ruang Kreatif",
+        "Jalan": "Jl. Laswi No.7",
+        "Desa/Kelurahan": "Kacapiring",
+        "Kecamatan": "Batununggal",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://golali.id/wp-content/uploads/2024/05/Bandung-Creative-Hub.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.631617,
+          -6.9183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 22,
+        "Nama": "Komunitas Hong",
+        "Kategori": "Komunitas Budaya",
+        "Jalan": "Jl. Bukit Pakar Utara No.35",
+        "Desa/Kelurahan": "Ciburial",
+        "Kecamatan": "Cimenyan",
+        "Kota/Kabupaten": "Kab. Bandung",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqv1-m_X_JLAET8KXO6i9WFrEJOoXLsd2XHlDEJlNq5YIlgsV7p_fFy8h3TRP7o90KuEfo8w40C-s9vShZcroCygcOTNQcF38YrZ0hMBPBzB0S__VRkQYm82yGtu1Nrth58tEU2TA=w223-h160-n-k-no-nu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.63364,
+          -6.85808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 23,
+        "Nama": "Wot Batu",
+        "Kategori": "Galeri Seni",
+        "Jalan": "Jl. Bukit Pakar Timur No.98",
+        "Desa/Kelurahan": "Ciburial",
+        "Kecamatan": "Cimenyan",
+        "Kota/Kabupaten": "Kab. Bandung",
+        "Kontak": "",
+        "gambar": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/fd/da/78/batu-air-wot-batu-bandung.jpg?w=1200&h=-1&s=1"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.63614,
+          -6.85966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 24,
+        "Nama": "Grey Art Gallery",
+        "Kategori": "Galeri Seni",
+        "Jalan": "Jl. Braga No.47",
+        "Desa/Kelurahan": "Braga",
+        "Kecamatan": "Sumur Bandung",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noHdaB9k9hH_Xwvi0Rhy6Wica68Jrdpaya_Zzne0_F6VVwtPNWzueH36gSiUWgv35e4_hREY0zCxqSKS-bDvfIsqdov2nYrB-m5BMhoWIj2vqn-d8k9iY6IY2Xe4mRKDD9FwRYfzg=s1360-w1360-h1020-rw"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.60952,
+          -6.91862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 25,
+        "Nama": "Jelekong Art Village",
+        "Kategori": "Kampung Seni",
+        "Jalan": "",
+        "Desa/Kelurahan": "Desa Jelekong",
+        "Kecamatan": "Baleendah",
+        "Kota/Kabupaten": "Kab. Bandung",
+        "Kontak": "",
+        "gambar": "https://img.antarafoto.com/cache/1200x746/2016/09/27/lukisan-jelekong-dkoq-dom.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.65508,
+          -7.0237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "No": 26,
+        "Nama": "Taman Sejarah Bandung",
+        "Kategori": "Taman Edukasi",
+        "Jalan": "Jl. Aceh",
+        "Desa/Kelurahan": "Babakan Ciamis",
+        "Kecamatan": "Sumur Bandung",
+        "Kota/Kabupaten": "Kota Bandung",
+        "Kontak": "",
+        "gambar": "https://awsimages.detik.net.id/community/media/visual/2023/12/05/taman-sejarah-bandung_169.jpeg?w=620"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.61029,
+          -6.9102
+        ]
+      }
+    }
+  ]
+}
