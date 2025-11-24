@@ -64,6 +64,7 @@ body {
     padding: 6px;
     display: flex;
     gap: 4px;
+    transition: var(--transition);
 }
 
 .tab-btn {
@@ -170,6 +171,7 @@ body {
     max-height: calc(100vh - 96px);
     overflow: hidden;
     animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: var(--transition);
 }
 
 @keyframes slideIn {
@@ -680,6 +682,7 @@ body {
     top: 80px;
     right: 16px;
     z-index: 1000;
+    transition: var(--transition);
 }
 
 .layer-btn {
@@ -999,54 +1002,85 @@ body {
 }
 
 /* ================================================
+   NAVIGATION MODE STYLES (WAZE-LIKE)
+   ================================================ */
+/* Saat body memiliki class .navigation-active:
+   - Search bar hilang
+   - Kategori hilang
+   - Panel routing turun ke bawah atau mengecil
+   - Layer switcher hilang (opsional, agar fokus)
+*/
+body.navigation-active .category-tabs,
+body.navigation-active .search-container,
+body.navigation-active .layer-switcher {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+}
+
+/* Panel Routing saat Navigasi: Sembunyikan input, sisakan direction & stop */
+body.navigation-active .panel-header,
+body.navigation-active .route-inputs-container,
+body.navigation-active .suggestions-list,
+body.navigation-active .transport-modes {
+    display: none;
+}
+
+body.navigation-active .routing-panel {
+    top: auto;
+    bottom: 24px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+body.navigation-active .action-buttons {
+    border-top: none;
+    border-bottom: none;
+}
+
+/* ================================================
    RESPONSIVE & EMBEDDED MODE FIXES
    ================================================ */
 
-/* Penyesuaian untuk layar medium & saat peta di-embed */
 @media (max-width: 900px) {
-    /* 1. Kategori Tab: Agar muat di wadah sempit */
     .category-tabs {
         top: 12px;
         width: auto;
-        max-width: 95%; /* Gunakan % wadah, bukan vw */
-        overflow-x: auto; /* Scroll samping jika mentok */
+        max-width: 95%;
+        overflow-x: auto;
         justify-content: flex-start;
-        scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
+        scrollbar-width: none;
         padding: 4px;
     }
     
-    /* Sembunyikan scrollbar di Chrome/Safari */
     .category-tabs::-webkit-scrollbar {
         display: none;
     }
 
-    /* 2. Search Container & Routing Panel */
     .search-container,
     .routing-panel {
-        /* PENTING: Gunakan % agar tidak melebar keluar wadah */
         width: calc(100% - 24px); 
-        max-width: 360px; /* Batasi agar tidak terlalu lebar */
-        left: 12px; /* Margin kiri lebih kecil */
-        top: 70px; /* Naikkan sedikit agar tidak terlalu jauh dari tab */
+        max-width: 360px;
+        left: 12px; 
+        top: 70px;
     }
 
-    /* 3. Layer Switcher (Tombol layer di kanan) */
     .layer-switcher {
         top: 70px;
         right: 12px;
-        /* Jika layar sangat sempit, sembunyikan text, ikon saja */
     }
 
-    /* 4. Map Controls (Zoom, dll) */
     .map-controls {
         right: 12px;
         bottom: 24px;
     }
 }
 
-/* Penyesuaian Ekstra untuk Wadah Sangat Kecil (Mobile / Kolom Sempit) */
 @media (max-width: 480px) {
-    /* Sembunyikan teks pada tombol tab, tampilkan ikon saja */
     .tab-btn span {
         display: none;
     }
@@ -1055,23 +1089,27 @@ body {
         padding: 8px 12px;
     }
 
-    /* Search bar memenuhi lebar */
     .search-container,
     .routing-panel {
         width: calc(100% - 24px);
         left: 12px;
-        max-width: none; /* Full width */
+        max-width: none;
     }
     
-    /* Posisikan ulang agar tidak menumpuk */
     .search-container {
         top: 65px;
     }
     
     .layer-switcher {
         top: 65px;
-        /* Geser layer switcher ke bawah search bar jika perlu, 
-           atau biarkan di kanan tapi z-index di bawah search */
         z-index: 900; 
+    }
+    
+    /* Navigasi di Mobile: Full width bottom */
+    body.navigation-active .routing-panel {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        border-radius: 16px;
     }
 }

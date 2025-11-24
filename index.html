@@ -6,12 +6,12 @@
     <title>WebGIS Tata Ruang Bandung</title>
     
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="CSS/header.css">
-    <link rel="stylesheet" href="CSS/hero.css">
-    <link rel="stylesheet" href="CSS/Panorama.css">
-    <link rel="stylesheet" href="CSS/Category.css">
-    <link rel="stylesheet" href="CSS/Maps.css">
-    <link rel="stylesheet" href="CSS/footer.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/Panorama.css">
+    <link rel="stylesheet" href="css/Category.css">
+    <link rel="stylesheet" href="css/Maps.css">
+    <link rel="stylesheet" href="css/footer.css">
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
@@ -51,17 +51,17 @@
     <section id="hero" class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <span class="badge">🌐 Sistem Informasi Geografis Terpadu</span>
+                <span class="badge">🌍 Sistem Informasi Geografis Terpadu</span>
                 <h1 class="hero-title">Jelajahi Tata Ruang & Wisata <span class="text-gradient">Kota Bandung</span></h1>
                 <p class="hero-desc">Platform data spasial interaktif untuk memantau destinasi wisata, zonasi lahan, dan rute terbaik di Kota Bandung dalam satu peta terintegrasi.</p>
                 
                 <div class="search-wrapper">
-    <i class="ri-search-line search-icon"></i>
-    <input type="text" class="search-input" placeholder="Cari kecamatan, destinasi, atau jenis lahan..." id="heroSearchInput" autocomplete="off">
-    <button class="search-btn">Cari</button>
-    
-    <div class="hero-suggestions-list" id="heroSuggestions"></div>
-</div>
+                    <i class="ri-search-line search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Cari kecamatan, destinasi, atau jenis lahan..." id="heroSearchInput" autocomplete="off">
+                    <button class="search-btn">Cari</button>
+                    
+                    <div class="hero-suggestions-list" id="heroSuggestions"></div>
+                </div>
 
                 <div class="hero-buttons">
                     <a href="./HTML/routing.html" target="_blank" class="btn btn-primary">
@@ -115,57 +115,87 @@
         <div class="container">
             <div class="section-header text-center mb-5">
                 <h2>Eksplorasi Bandung</h2>
-                <p>Pilih kategori data untuk detail lebih lanjut atau jelajahi peta interaktif secara langsung.</p>
+                <p>Pilih kategori data untuk melihat daftar lokasi atau jelajahi peta interaktif secara langsung.</p>
             </div>
 
             <div class="dashboard-grid">
+                
+                <!-- ===== SIDEBAR (STRUKTUR DIPERBAIKI) ===== -->
                 <aside class="dashboard-sidebar">
-                    <h3 class="sidebar-title">Layer Data</h3>
                     
-                    <div class="category-list">
-                        <a href="./HTML/routing.html" class="cat-card-mini" data-category="alam">
-                            <div class="icon-box bg-green"><i class="ri-leaf-line"></i></div>
-                            <div class="text-content">
-                                <h4>Wisata Alam</h4>
-                                <span>Hutan & Taman</span>
-                            </div>
-                            <i class="ri-arrow-right-s-line arrow"></i>
-                        </a>
-                        
-                        <a href="./HTML/routing.html" class="cat-card-mini" data-category="budaya">
-                            <div class="icon-box bg-orange"><i class="ri-ancient-pavilion-line"></i></div>
-                            <div class="text-content">
-                                <h4>Cagar Budaya</h4>
-                                <span>Sejarah & Seni</span>
-                            </div>
-                            <i class="ri-arrow-right-s-line arrow"></i>
-                        </a>
-
-                        <a href="./HTML/routing.html" class="cat-card-mini" data-category="kuliner">
-                            <div class="icon-box bg-red"><i class="ri-restaurant-line"></i></div>
-                            <div class="text-content">
-                                <h4>Pusat Kuliner</h4>
-                                <span>Resto & Cafe</span>
-                            </div>
-                            <i class="ri-arrow-right-s-line arrow"></i>
-                        </a>
-
-                        <a href="./HTML/routing.html" class="cat-card-mini" data-category="rekreasi">
-                            <div class="icon-box bg-blue"><i class="ri-emotion-happy-line"></i></div>
-                            <div class="text-content">
-                                <h4>Rekreasi</h4>
-                                <span>Hiburan Keluarga</span>
-                            </div>
-                            <i class="ri-arrow-right-s-line arrow"></i>
-                        </a>
+                    <!-- HEADER SIDEBAR (FIXED TOP) -->
+                    <div class="sidebar-header-wrapper">
+                        <div id="defaultHeader">
+                            <h3 class="sidebar-title">Layer Data</h3>
+                        </div>
+                        <div id="listHeader" style="display: none;">
+                            <button class="btn-back" id="backToCategories">
+                                <i class="ri-arrow-left-line"></i> Kembali
+                            </button>
+                            <h3 class="sidebar-title" id="selectedCategoryTitle">Kategori</h3>
+                        </div>
                     </div>
+                    
+                    <!-- CONTENT AREA (SCROLLABLE) - INI YANG PENTING! -->
+                    <div class="sidebar-content-area">
+                        
+                        <!-- CATEGORY MENU (Default View) -->
+                        <div class="category-menu" id="categoryMenu">
+                            <div class="cat-card-mini" data-category="nature" style="cursor: pointer;">
+                                <div class="icon-box bg-green"><i class="ri-leaf-line"></i></div>
+                                <div class="text-content">
+                                    <h4>Wisata Alam</h4>
+                                    <span>Hutan & Taman</span>
+                                </div>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                            
+                            <div class="cat-card-mini" data-category="culture" style="cursor: pointer;">
+                                <div class="icon-box bg-orange"><i class="ri-ancient-pavilion-line"></i></div>
+                                <div class="text-content">
+                                    <h4>Cagar Budaya</h4>
+                                    <span>Sejarah & Seni</span>
+                                </div>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
 
-                    <div class="info-widget mt-4">
-                        <i class="ri-information-line"></i>
-                        <p><small>Klik ikon layer di dalam peta untuk membuka visual maps secara langsung.</small></p>
+                            <div class="cat-card-mini" data-category="culinary" style="cursor: pointer;">
+                                <div class="icon-box bg-red"><i class="ri-restaurant-line"></i></div>
+                                <div class="text-content">
+                                    <h4>Pusat Kuliner</h4>
+                                    <span>Resto & Cafe</span>
+                                </div>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+
+                            <div class="cat-card-mini" data-category="recreation" style="cursor: pointer;">
+                                <div class="icon-box bg-blue"><i class="ri-emotion-happy-line"></i></div>
+                                <div class="text-content">
+                                    <h4>Rekreasi</h4>
+                                    <span>Hiburan Keluarga</span>
+                                </div>
+                                <i class="ri-arrow-right-s-line arrow"></i>
+                            </div>
+                        </div>
+
+                        <!-- PLACES LIST (List View - Hidden by default) -->
+                        <div class="places-list-container" id="placesList" style="display: none;">
+                            <!-- Dynamic content will be inserted here by JavaScript -->
+                        </div>
+                        
+                    </div>
+                    <!-- END OF CONTENT AREA -->
+
+                    <!-- FOOTER SIDEBAR (FIXED BOTTOM) -->
+                    <div class="sidebar-footer">
+                        <div class="info-widget">
+                            <i class="ri-information-line"></i>
+                            <p><small>Klik item di list atau ikon di peta untuk detail lokasi.</small></p>
+                        </div>
                     </div>
                 </aside>
 
+                <!-- ===== MAP WRAPPER ===== -->
                 <main class="dashboard-map-wrapper">
                     <div class="map-container-clean">
                         <iframe 
@@ -192,43 +222,59 @@
     </section>
 
     <footer class="footer">
-        <div class="container footer-grid">
-            <div class="footer-col brand-col">
-                <h3>WebGIS Bandung</h3>
-                <p>Sistem informasi geografis modern untuk eksplorasi pariwisata dan tata ruang kota yang terintegrasi.</p>
-            </div>
-            
-            <div class="footer-col">
-                <h4>Navigasi</h4>
-                <ul class="footer-links">
-                    <li><a href="#hero">Beranda</a></li>
-                    <li><a href="#explore">Peta & Destinasi</a></li>
-                </ul>
-            </div>
+        <div class="container">
+            <div class="footer-grid">
+                
+                <div class="footer-col brand-col">
+                    <h3>WebGIS <span class="text-primary">Bandung</span></h3>
+                    <p>Sistem informasi geografis modern untuk eksplorasi pariwisata dan tata ruang kota yang terintegrasi.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Beranda</a></li>
+                        <li><a href="#explore">Destinasi & Peta</a></li>
+                        <li><a href="#panorama">Panorama</a></li>
+                        <li><a href="./HTML/login.html">Masuk Admin</a></li>
+                    </ul>
+                </div>
 
-            <div class="footer-col">
-                <h4>Tim Pengembang</h4>
-                <ul class="developer-list">
-                    <li>
-                        <i class="ri-user-smile-line"></i> 
-                        <span>Badar Zaki Baradja</span>
-                    </li>
-                    <li>
-                        <i class="ri-user-smile-line"></i> 
-                        <span>Bagas Maharda Wisesa</span>
-                    </li>
-                </ul>
-            </div>
+                <div class="footer-col">
+                    <h4>Tim Pengembang</h4>
+                    <ul class="developer-list">
+                        <li>
+                            <div class="dev-icon"><i class="ri-code-s-slash-line"></i></div>
+                            <span>Badar Zaki Baradja</span>
+                        </li>
+                        <li>
+                            <div class="dev-icon"><i class="ri-brush-line"></i></div>
+                            <span>Bagas Maharda Wisesa</span>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="footer-col">
-                <h4>Kontak</h4>
-                <p class="contact-item"><i class="ri-map-pin-line"></i> Jl. Asia Afrika No. 1, Bandung</p>
-                <p class="contact-item"><i class="ri-mail-send-line"></i> info@webgis-bandung.id</p>
+                <div class="footer-col">
+                    <h4>Kontak</h4>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="ri-map-pin-line"></i>
+                            <span>Jl. Asia Afrika No. 1, Bandung</span>
+                        </li>
+                        <li>
+                            <i class="ri-mail-send-line"></i>
+                            <span>info@webgis-bandung.id</span>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
         </div>
 
-        <div class="footer-bottom text-center">
-            <p>&copy; 2024 WebGIS Bandung Project. Created with <i class="ri-heart-fill text-danger"></i></p>
+        <div class="footer-bottom">
+            <div class="container text-center">
+                <p>&copy; 2024 WebGIS Bandung Project. Created with <i class="ri-heart-fill text-danger"></i> by Badar & Bagas.</p>
+            </div>
         </div>
     </footer>
 

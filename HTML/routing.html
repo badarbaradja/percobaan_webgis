@@ -5,25 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebGIS Routing - Bandung</title>
     
-    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- RemixIcon -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="routing.css">
 </head>
 <body>
-    <!-- Map Container -->
     <div id="map"></div>
 
-    <!-- Category Filter Tabs -->
     <div class="category-tabs">
         <button class="tab-btn active" data-category="all" onclick="filterCategory('all')">
             <i class="ri-apps-line"></i>
@@ -47,7 +41,6 @@
         </button>
     </div>
 
-    <!-- Search Container -->
     <div class="search-container" id="searchContainer">
         <div class="search-input-wrapper">
             <button class="menu-btn" onclick="openRoutingPanel()">
@@ -67,7 +60,6 @@
         <div class="suggestions-list" id="searchSuggestions"></div>
     </div>
 
-    <!-- Routing Panel -->
     <div class="routing-panel" id="routingPanel">
         <div class="panel-header">
             <button class="back-btn" onclick="closeRoutingPanel()">
@@ -155,9 +147,9 @@
         </div>
 
         <div class="action-buttons">
-            <button class="btn btn-primary" onclick="calculateRoute()">
+            <button class="btn btn-primary" id="mainNavBtn" onclick="calculateRoute()">
                 <i class="ri-navigation-line"></i>
-                <span>Mulai Navigasi</span>
+                <span id="mainNavText">Mulai Navigasi</span>
             </button>
             <button class="btn btn-secondary" onclick="toggleDirections()" style="display: none;" id="directionsBtn">
                 <i class="ri-list-check"></i>
@@ -172,7 +164,6 @@
         <div class="directions-container" id="directionsContainer"></div>
     </div>
 
-    <!-- Layer Switcher -->
     <div class="layer-switcher">
         <button class="layer-btn" onclick="toggleLayerMenu()">
             <i class="ri-map-fill"></i>
@@ -196,7 +187,6 @@
         </div>
     </div>
 
-    <!-- Map Controls -->
     <div class="map-controls">
         <button class="map-control-btn" onclick="toggleFullscreen()" title="Fullscreen">
             <i class="ri-fullscreen-line" id="fullscreenIcon"></i>
@@ -213,7 +203,6 @@
         </button>
     </div>
 
-    <!-- Debug Panel (Tekan Ctrl+D) -->
     <div class="debug-panel" id="debugPanel">
         <div style="font-weight: bold; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
             <span>🔍 Debug Info</span>
@@ -222,17 +211,14 @@
         <div id="debugInfo"></div>
     </div>
 
-    <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="spinner-large"></div>
         <div class="loading-text-large">Memuat peta...</div>
     </div>
 
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     
-    <!-- Custom JS -->
     <script src="routing.js"></script>
 </body>
 </html>

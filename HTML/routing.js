@@ -1248,29 +1248,21 @@ console.log('%c━━━━━━━━━━━━━━━━━━━━━�
 // Taruh ini di baris PALING BAWAH file routing.js
 // ================================================
 
+
 window.WebGIS_API = {
-    // Fungsi 1: Menerima pesanan pencarian dari index.html
+    // Fungsi pencarian (yang sudah ada)
     search: (query) => {
-        // Memastikan data wisata sudah siap
-        if (typeof touristData === 'undefined' || !touristData) {
-            console.warn('Data wisata belum dimuat sepenuhnya.');
-            return [];
-        }
-        // Memanggil fungsi pencarian yang sudah ada
+        if (typeof touristData === 'undefined') return [];
         return searchTouristSpots(query);
     },
 
-    // Fungsi 2: Terbang ke lokasi saat diklik
+    // Fungsi navigasi (yang sudah ada)
     flyToLocation: (lat, lon) => {
         if (!map) return;
-        
         map.flyTo([lat, lon], 17, { duration: 1.5 });
-
-        // Tunggu sebentar lalu buka popup
         setTimeout(() => {
             appState.markerCluster.eachLayer(layer => {
                 const latLng = layer.getLatLng();
-                // Cocokkan koordinat
                 if (Math.abs(latLng.lat - lat) < 0.00001 && Math.abs(latLng.lng - lon) < 0.00001) {
                     appState.markerCluster.zoomToShowLayer(layer, () => {
                         layer.openPopup();
@@ -1278,6 +1270,22 @@ window.WebGIS_API = {
                 }
             });
         }, 800);
+    },
+
+    // --- TAMBAHAN BARU UNTUK SIDEBAR ---
+    
+    // 1. Ambil Data Berdasarkan Kategori untuk ditampilkan di Sidebar Parent
+    getDataByCategory: (category) => {
+        if (!touristData) return [];
+        // Return array data sesuai kategori
+        return touristData[category] || [];
+    },
+
+    // 2. Perintahkan Peta untuk Filter Marker
+    filterMap: (category) => {
+        if (typeof filterCategory === 'function') {
+            filterCategory(category);
+        }
     }
 };
 
