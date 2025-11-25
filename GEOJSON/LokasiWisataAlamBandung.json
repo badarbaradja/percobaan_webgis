@@ -1,0 +1,1294 @@
+
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.2642252,
+          -7.2009874
+        ]
+      },
+      "properties": {
+        "Nama": "Pesona Desa Cipelah",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npJALCwx8KddDBdBW6g0LJ3gLe-y98B0CCTpCt2JUps45Cp5OMDUXn7euWGXjTpj5O7PktdeKnSa5wU3xKEcpicSGBO-BQP6Cs1YDpaIDT-mAyjIBFmVvKVBZCRReLZSV9jqddJ=s1360-w1360-h1020-rw",
+        "halaman": "PesonaCipelah.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Cipelah",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "83822889826"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.2873706,
+          -7.1845629
+        ]
+      },
+      "properties": {
+        "Nama": "Ciherang Riverside Rancabali Campground",
+        "Kategori": "Camping",
+        "Popularity": "most-visited",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_CiherangRiverside1.jpg",
+        "halaman": "CiherangRiverside.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Cipelah",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "81313411590"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3166001,
+          -7.201544
+        ]
+      },
+      "properties": {
+        "Nama": "Kebun Kopi",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_KebunKopi.jpeg",
+        "halaman": "KebunKopi.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Cibuni",
+        "Kecamatan": "Sukaresmi",
+        "Kabupaten/Kota": "Rancabali",
+        "Provinsi": "Kabupaten Bandung",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3166001,
+          -7.201544
+        ]
+      },
+      "properties": {
+        "Nama": "Kebon Pinus",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr91jdJpUFGUjGxCMHE5uPMt10wqTrM50cJgnHv4oSZfuDBGf9S3FIFCpuzL8jgxtjNjzyDACrd8QY_itWO_nIB8eoyrtrk3QjSE1PQ3oncunBV8fVyOVKbat6rYZJ46--atJeh=s1360-w1360-h1020-rw",
+        "halaman": "KebonPinus.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Cipelah",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3403799,
+          -7.204632
+        ]
+      },
+      "properties": {
+        "Nama": "Kampung Cipuspa",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noP5jQ7ZV7e3IaX7gDRsLv9RJtNKh_g645qG8N9xpQVxU_f4OqQ2yvjgGPyJGBj3l4xomrf7jTUxXuFzJpGhV8HCUp0471rvKze1r-u3lI07VbFefISVBQ9zwS7Bc7Ci-wsPQLdDcNKfGh4=s1360-w1360-h1020-rw",
+        "halaman": "KampungCipuspa.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sukaresmi",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3600843,
+          -7.2021206
+        ]
+      },
+      "properties": {
+        "Nama": "Spot Teletubies",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_SpotTeletubbies.jpg",
+        "halaman": "SpotTeletubies.html",
+        "Jalan": "Unnamed Road",
+        "Desa/Kelurahan": "Sukaresmi",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3542767,
+          -7.1996679
+        ]
+      },
+      "properties": {
+        "Nama": "Spot Swiss Cibuni",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npsAUffIYEg1PaJzADzWKnq6dUXsrimwi7uUejnlEA9PQxvb4D3lnVRFU8k-B4-nxUW0z9W8uHaTPRVYN3lRlwuG6NRESxjU2AHoTqJ2cVR4NHS2JvFwBErT0yQrzw4G-TT28qLdvhNsX0e=s1360-w1360-h1020-rw",
+        "halaman": "SpotSwissCibuni.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sukaresmi",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3567571,
+          -7.2267411
+        ]
+      },
+      "properties": {
+        "Nama": "Negeri Diatas Awan Rancabali",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://asset.kompas.com/crops/ywgKtD9K3ytpqrJoFdMDuhY46Hc=/0x100:1200x900/1200x800/data/photo/2019/09/17/5d8093fab281f.jpg",
+        "halaman": "NegeriAwan.html",
+        "Jalan": "Unnamed Road",
+        "Desa/Kelurahan": "Sukaresmi",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "81277439444"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3567571,
+          -7.2267411
+        ]
+      },
+      "properties": {
+        "Nama": "Kelok Sarebu",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_KelokSarebu.png",
+        "halaman": "KelokSarebu.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sukaresmi",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3524656,
+          -7.2270817
+        ]
+      },
+      "properties": {
+        "Nama": "Wisata Kebun Rasmala",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_KebunRasmala.png",
+        "halaman": "KebunRasmala.html",
+        "Jalan": "Jl. Cikadu",
+        "Desa/Kelurahan": "Sukaresmi",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3344405,
+          -7.1512621
+        ]
+      },
+      "properties": {
+        "Nama": "Camping Ground Nyampay",
+        "Kategori": "Camping",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_CGNyampay.jpg",
+        "halaman": "CampingNyampay.html",
+        "Jalan": "Camping ground Nyampay",
+        "Desa/Kelurahan": "Indragiri",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "83863817257"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3344405,
+          -7.1512621
+        ]
+      },
+      "properties": {
+        "Nama": "Ranca Upas Ciwidey",
+        "Kategori": "Camping",
+        "Popularity": "most-visited",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_RancaUpas1.jpg",
+        "halaman": "RancaUpas.html",
+        "Jalan": "Jl. Camp Ranca Upas",
+        "Desa/Kelurahan": "Patengan",
+        "Kecamatan": "Rancabali",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "81359569984"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.3820906,
+          -7.1545302
+        ]
+      },
+      "properties": {
+        "Nama": "Kawah Putih",
+        "Kategori": "Mountain",
+        "Popularity": "most-visited",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_KawahPutih1.jpg",
+        "halaman": "KawahPutih.html",
+        "Jalan": "Jl. Ciwidey Patengan Km 11 Lebakmuncang",
+        "Desa/Kelurahan": "Sugihmukti",
+        "Kecamatan": "Pasirjambu",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "81220068486"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4091089,
+          -7.1847428
+        ]
+      },
+      "properties": {
+        "Nama": "Bukit Jamur Rancabolang Pasirjambu",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_BukitJamurRancabolang.jpg",
+        "halaman": "BukitJamur.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sugihmukti",
+        "Kecamatan": "Pasirjambu",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4091089,
+          -7.1847428
+        ]
+      },
+      "properties": {
+        "Nama": "Kebun Teh Rancabolang",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_KebunTehRancabolang1.jpg",
+        "halaman": "KebunTehRancabolang.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sugihmukti",
+        "Kecamatan": "Pasirjambu",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.427485,
+          -7.1722167
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Siliwangi Cihejo",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_CurugSiliwangiCihejo.jpg",
+        "halaman": "CurugSiliwangi.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sugihmukti",
+        "Kecamatan": "Pasirjambu",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4296474,
+          -7.1571982
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Cipanji",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_CurugCipanji.png",
+        "halaman": "CurugCipanji.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Margamulya",
+        "Kecamatan": "Pasirjambu",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "89618712789"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4681949,
+          -7.217465
+        ]
+      },
+      "properties": {
+        "Nama": "Perkebunan Teh Dewata",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://raw.githubusercontent.com/claranvt/Image_WisataBandung/Alam/Alam_KebunTehDewata.jpg",
+        "halaman": "PerkebunanDewata.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sugihmukti",
+        "Kecamatan": "Pasirjambu",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "40972"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4904417,
+          -7.2100436
+        ]
+      },
+      "properties": {
+        "Nama": "Sunrise Point Cukul",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://lh3.googleusercontent.com/p/AF1QipPiLjG8vo3O1j7TFhGvUV-dwVTwJk4rtnZ-r2vH=s1360-w1360-h1020-rw",
+        "halaman": "SunriseCukul.html",
+        "Jalan": "Jl. Cukul",
+        "Desa/Kelurahan": "Sukaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "40378"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4904417,
+          -7.2100436
+        ]
+      },
+      "properties": {
+        "Nama": "WARA'AS",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npcZnAQukNQhkhr6aOn2qCjzGZibc8RMMH_BU5cWLKQkyQ47DcH7KF20y5REntEDLXPH4dMAOm42PTvD5g8MvQLiKNZzkTmzDNBhYyUbEBOQnWzGoS6zXeCgmjk702as4lpSXJ_fw=w243-h203-n-k-no-nu",
+        "halaman": "Waraas.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Warnasari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "81312856926"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5087296,
+          -7.2269058
+        ]
+      },
+      "properties": {
+        "Nama": "Taman Langit Pangalengan (Sunrise Point & Camping Ground)",
+        "Kategori": "Camping",
+        "Popularity": "most-visited",
+        "gambar": "https://lh3.googleusercontent.com/p/AF1QipOKjp2p623OHASN7LVp_8OY0N3-epMM2x-t_5hg=s1360-w1360-h1020-rw",
+        "halaman": "TamanLangit.html",
+        "Jalan": "Kp. Puncak Mulya",
+        "Desa/Kelurahan": "Sukaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "8112131220"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.521685,
+          -7.2461127
+        ]
+      },
+      "properties": {
+        "Nama": "Epic view.pujasp",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrzLYVoAfd7ZDe5ZLatc8PuiVWonVQj0jYixP0IYd8Gc70e-bUhjFaAY7xqMqR6W2oeDvBo5aTXjXQRCrQ5EdhBWXgNmVA1EQ6h__Gr80LHv4Hjff8Zpz2aDHgYbvvSnQ-5oPaY=s1360-w1360-h1020-rw",
+        "halaman": "EpicView.html",
+        "Jalan": "Jl. Talegong",
+        "Desa/Kelurahan": "Sukaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.527192,
+          -7.248279
+        ]
+      },
+      "properties": {
+        "Nama": "Cukul Atas",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nptC8BpHZX2ZiLA7jcrzuFVjjwRBMzTHTWsFfwmjeLgOe957HF-BRrgpmQvCG9nyVcfiLNsRraaoBHr1sKKDz6oEqjQNeJhYdcSzJcDneXbnYXfJrk4A120eyiHbiqxjlwVfHHt=w243-h203-n-k-no-nu",
+        "halaman": "CukulAtas.html",
+        "Jalan": "Jl. Cukul",
+        "Desa/Kelurahan": "Sukaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5304431,
+          -7.2345302
+        ]
+      },
+      "properties": {
+        "Nama": "Cukul Campsite",
+        "Kategori": "Camping",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/p/AF1QipNBPA4YmGEqC4jqThct1Oxn6NsxEzPVpyEDRs-F=s1360-w1360-h1020-rw",
+        "halaman": "CukulCampsite.html",
+        "Jalan": "Jl. Cukul",
+        "Desa/Kelurahan": "Sukaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "85974779204"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5230995,
+          -7.2459582
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Congeang",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://jendelapuspita.com/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-13-at-19.48.57.jpeg",
+        "halaman": "CurugCongeang.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sukaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5416644,
+          -7.2517398
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Muara Pangalengan",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrqqRuLAqqvuuTU1BHI8rDyc2PuK8lcDYT_FlbvKlzemkFkyGBAqZE51lkO0VXNzrMMF6nNbcQm_Bwum8NTmcdNR7f2Jh5Tx4kNUiWl_vBGnT0_sFX2Z9KEJMoOGzaqKoU8179DNw=s1360-w1360-h1020-rw",
+        "halaman": "CurugMuara.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Margaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5435184,
+          -7.2512887
+        ]
+      },
+      "properties": {
+        "Nama": "Air Terjun Leutik",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noP3Fj3v9VF5RvklMTBOVkqdnVfYVeA0_NQPM3T4Jt6DJ0ap4FxDNKY4r9w8UiWOGqhXKcnhGkJmiM-Rf5Zw3lCmVGt0BsTbYRHQk1Zld07vaGbqYaExV_3Eu5-tN7xSQujNGMH=s1360-w1360-h1020-rw",
+        "halaman": "CurugLeutik.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Margaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5556221,
+          -7.242856
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Cilaki Pangalengan",
+        "Kategori": "Waterfall",
+        "Popularity": "most-visited",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nonvPYh7u_-Edjzi7O_BjKH7v4qCPhL7hj25rdPdaL9UYNQ69NoMOkRjmZEvCBYFMffmltM4h0u54hS9-bHaIb9-4QLXYR5-A7SEBHhfvUSGTk7z9mWoxKbGhB-6hcXbzOEj0nl=s1360-w1360-h1020-rw",
+        "halaman": "CurugCilaki.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Margaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5326605,
+          -7.23396
+        ]
+      },
+      "properties": {
+        "Nama": "Kedaton Bukit Panyawangan Pangalengan",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npiF4MaKQGlgVs6WRoxxo9GupQGCIFK8CPKzG_n6UrsDiM8nL3KVpKsShvERyFYidCDNzG5MYYZEnJqX_iri0An1d5sGOwDJq5N3qBZ8QOYid91-cPEsrjZiSJjD7M-1DvF7Bm9=s1360-w1360-h1020-rw",
+        "halaman": "BukitPanyawangan.html",
+        "Jalan": "Jl. Cukul",
+        "Desa/Kelurahan": "Sukaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "82127354855"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5253079,
+          -7.2208771
+        ]
+      },
+      "properties": {
+        "Nama": "Situ Datar Buana",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://asset-2.tribunnews.com/jabar/foto/bank/images/Situ-Datar-Buana-Pengalengan-2.jpg",
+        "halaman": "SituDatarBuana.html",
+        "Jalan": "Perkebunan Jl. Pasir Malang",
+        "Desa/Kelurahan": "Margaluyu",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5076392,
+          -7.1953896
+        ]
+      },
+      "properties": {
+        "Nama": "Wanasari Campingground",
+        "Kategori": "Camping",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrfgSlerIpcFr3o5N0k9SYh-f-qpFOgU26f931yraKHGhh-9nd8Zs8Rpm2ap1OVvbkXqIkMaVDHTt-b-gu70EbLMwgOrwD8swuYrm2WedWvc3JuVMud4cIexqv5z9unOPFPWXM1=w270-h312-n-k-no",
+        "halaman": "WanasariCamping.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Warnasari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "85659531196"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5161689,
+          -7.192871
+        ]
+      },
+      "properties": {
+        "Nama": "C-Rafting Pangalengan",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEj6nWGzDfMtQmSkojLZeJ9Q7TeCx6U5tmR0N86BFVG97td50r0_5uFWGLYiq6IyUEJI6TMPMt7myEkTKkG5gaqJcPBKT2VQU_kGVq-CZUOqzAX-NYIFlIoTb81Qj9IwkFMI7FtXL8vp-r/s935/rafting+pangalengan+bandung+gravity+adventure+2.jpg",
+        "halaman": "CRafting.html",
+        "Jalan": "Jl. Situ Cileunca No.KM. 4",
+        "Desa/Kelurahan": "Sukamanah",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5304866,
+          -7.1934754
+        ]
+      },
+      "properties": {
+        "Nama": "Situ Cileunca Pangalengan Bandung",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://asset.kompas.com/crops/lsNh_scBB8BuVNEe41GXTNnsqlA=/0x5:991x666/1200x800/data/photo/2022/06/05/629cad9225e85.jpg",
+        "halaman": "SituCileunca.html",
+        "Jalan": "Jl. Situ Cileunca No.19",
+        "Desa/Kelurahan": "Pulosari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "85318888668"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5365792,
+          -7.1991171
+        ]
+      },
+      "properties": {
+        "Nama": "Situ Cileunca Camping",
+        "Kategori": "Camping",
+        "Popularity": "popular",
+        "gambar": "https://static.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p2/202/2025/10/01/IMG_9327-625068955.jpeg",
+        "halaman": "SituCileuncaCamping.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Pulosari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "85727901825"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5614172,
+          -7.2021585
+        ]
+      },
+      "properties": {
+        "Nama": "Nusa Manona",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/79/2025/01/22/IMG-20250122-WA0005-3791496655.jpg",
+        "halaman": "NusaManona.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Cieurih",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "82151150997"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5774278,
+          -7.2203304
+        ]
+      },
+      "properties": {
+        "Nama": "NIMO Highland",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit19201280gsm/events/2024/07/15/eb089628-3b8b-4f06-9c07-bce92d337c1c-1721019579810-93ab4d602a8772a95dc1d147010e8514.png",
+        "halaman": "NimoHighland.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Banjarsari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "81120060980"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5754506,
+          -7.2217487
+        ]
+      },
+      "properties": {
+        "Nama": "Nimo Eye",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://assets.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p3/144/2024/10/13/Screenshot_2024-09-19-18-33-15-22_f69139cffc4d135a71392e13634f144a-4122131640-288676910.jpg",
+        "halaman": "NimoEye.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Banjarsari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "81120060980"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5768677,
+          -7.2176945
+        ]
+      },
+      "properties": {
+        "Nama": "Teh Jangkung Malabar",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc5r2wBXHCouxR7pH7pmg-7bXVBIv8B7rhUQ&s",
+        "halaman": "TehJangkung.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Banjarsari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "82120360713"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5768677,
+          -7.2176945
+        ]
+      },
+      "properties": {
+        "Nama": "Kebun Teh Pangalengan",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://labirutour.com/wp-content/uploads/2025/02/Kebun-Teh-Kertamanah-Pangalengan.jpg",
+        "halaman": "KebunTehPangalengan.html",
+        "Jalan": "Jl. Babakan No.2",
+        "Desa/Kelurahan": "Banjarsari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5765231,
+          -7.2329651
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Banjarsari",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhogzBSnCPsd_-1nAnCJ8Dn4YD1qetuxvcV0KLm1qB-WxycadiVp09wPdvgtB6bgHOimE0Q4GOGkPdXiYJFMYT3MRknSrXx1p_hbiANKYhsL5JL3ZaM4nXoB_1wJTaPeMCtxTI2rhPfI6Oe/s1600/curugjambe1.jpg",
+        "halaman": "CurugBanjarsari.html",
+        "Jalan": "Unnamed Road",
+        "Desa/Kelurahan": "Banjarsari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5765231,
+          -7.2329651
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Cilaki Luhur",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://picture.triptrus.com/image/2018/03/curug-luhur.jpeg",
+        "halaman": "CurugCilakiLuhur.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Banjarsari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6110938,
+          -7.2164107
+        ]
+      },
+      "properties": {
+        "Nama": "Wayang windu Panenjoan",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://salsawisata.com/wp-content/uploads/2022/12/Wayang-windu-Panenjoan.jpg",
+        "halaman": "WayangWindu.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Banjarsari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "85333339048"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6168452,
+          -7.2143652
+        ]
+      },
+      "properties": {
+        "Nama": "Kawah Wayang",
+        "Kategori": "Mountain",
+        "Popularity": "popular",
+        "gambar": "https://bobobox.com/blog/wp-content//uploads/2023/08/kawah-wayang-windu-pangalengan.webp",
+        "halaman": "KawahWayang.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Sukamanah",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "881024000000"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6138327,
+          -7.2079999
+        ]
+      },
+      "properties": {
+        "Nama": "Kolam Air Panas Sukaratu Pangalengan",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://www.king-adventure.com/wp-content/uploads/2024/02/Pemandian-Air-Panas-Pangalengan-Cocok-untuk-Liburan-Keluarga.jpg",
+        "halaman": "Sukaratu.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Banjarsari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6446518,
+          -7.2218202
+        ]
+      },
+      "properties": {
+        "Nama": "Wisata Hutan Pinus PAKAWA (Paniisan Karuhun Wa Hyang)",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4no-09-kZSXV5a10EI17iAARB8xJ3nwPdvqsB6w_VHEBFwOLcGUQjNgwXcOPVfTz-l1WtYqBJceeRboiGnAh4PkVFEzoDxHUjr0kPwx9cqNjlb3xAE_tTHG8ZwUIibhgriW0wKU4uA=s1360-w1360-h1020-rw",
+        "halaman": "Pakawa.html",
+        "Jalan": "Jl. Raya Pajaten",
+        "Desa/Kelurahan": "Tarumajaya",
+        "Kecamatan": "Kertasari",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "82121390539"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.642619,
+          -7.2370171
+        ]
+      },
+      "properties": {
+        "Nama": "Bukit Paesan",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nofT8GtpbinC2R60cUqWapz2VcN9ENwGi4uHdL-_b4nsr8f6wkRyGT7ZCOe0d1fTM_SyT_Ywez-M9-JyDOmAdYkphYP0l1tDe7lodKa1E_xMbk1G_pj3Um9TI_6S39YEitMGgGa=w289-h312-n-k-no",
+        "halaman": "BukitPaesan.html",
+        "Jalan": "Kp.Citawa",
+        "Desa/Kelurahan": "Tarumajaya",
+        "Kecamatan": "Kertasari",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "82128491866"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5321445,
+          -7.1574396
+        ]
+      },
+      "properties": {
+        "Nama": "Nuansa Riung gunung Pangalengan",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npYLoSRZfYWPo0axt3b0MO8u26PS0z_Tz6b-CgvSCFHvn2aLX3IppZqbpV5CmF-bh060zruV-3f9e-HmPZf3H1eDAmkB0cWAy_lZNWrgTMfJJgG9ansN0DZPU1CrCT1bWJzdbBC=w270-h312-n-k-no",
+        "halaman": "RiungGunung.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Riunggunung",
+        "Kecamatan": "Pulosari",
+        "Kabupaten/Kota": "Pangalengan",
+        "Provinsi": "Kabupaten Bandung",
+        "Kontak": "81294411209"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5303002,
+          -7.1707614
+        ]
+      },
+      "properties": {
+        "Nama": "Hutan Pinus Rahong",
+        "Kategori": "Scenery",
+        "Popularity": "most-visited",
+        "gambar": "https://blog.bookingtogo.com/wp-content/uploads/2022/06/Rahong-Pangalengan.jpg",
+        "halaman": "Rahong.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Pulosari",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5850699,
+          -7.1457375
+        ]
+      },
+      "properties": {
+        "Nama": "Wisata Gunung Puntang",
+        "Kategori": "Mountain",
+        "Popularity": "most-visited",
+        "gambar": "https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit19201280gsm/events/2025/02/11/d590fd20-f62a-40d4-84fc-1a43d6b509ea-1739259388788-39a24a01d1519225b43a055aa00383f0.png",
+        "halaman": "GunungPuntang.html",
+        "Jalan": "Gunung Puntang Desa",
+        "Desa/Kelurahan": "Pasirmulya",
+        "Kecamatan": "Banjaran",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "81224320001"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5987991,
+          -7.0296773
+        ]
+      },
+      "properties": {
+        "Nama": "Arjasari Rock Hills",
+        "Kategori": "Mountain",
+        "Popularity": "popular",
+        "gambar": "https://palpos.disway.id/upload/259162c0806e069be58897cec402a883.jpg",
+        "halaman": "Arjasari.html",
+        "Jalan": "Jl. Wargaluyu",
+        "Desa/Kelurahan": "Wargaluyu",
+        "Kecamatan": "Arjasari",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "82320209120"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.4410681,
+          -7.1488209
+        ]
+      },
+      "properties": {
+        "Nama": "Wisata Alam Cileuweung",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqP8uYgdzkVN8QjBGKdIKlpyN5MOBJ7FM7DtI22T3BJAN_KHVDuI__KwEUVuDhrmxINKvENu-Ogbyj2GvAFcsI2KCUTNz5srWNvTkmFHXJuaUUGhriN4qbqiAU49Nl8q10a5gVS=w289-h312-n-k-no",
+        "halaman": "Cileuweung.html",
+        "Jalan": "kp.ciruntah",
+        "Desa/Kelurahan": "Tribaktimulya",
+        "Kecamatan": "Pangalengan",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5467254,
+          -7.0636088
+        ]
+      },
+      "properties": {
+        "Nama": "WISATA ALAM SUNGAI CITALUTUG | DESA WISATA BAROS",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://tugubandung.id/wp-content/uploads/2023/07/SALAH-satu-sudut-lokasi-Wisata-Alam-Citalutug-Desa-Baros-Rabu-5-Juli-2023.-Foto-Widodo-A-scaled-1.jpg",
+        "halaman": "Citalutug.html",
+        "Jalan": "Kp cibayongbong",
+        "Desa/Kelurahan": "Baros",
+        "Kecamatan": "Arjasari",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "85294087746"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.583093,
+          -7.0737754
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Roda",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgjzKqglHD_BKieFWzz_yD9p0NoNKlaiT32w&s",
+        "halaman": "CurugRoda.html",
+        "Jalan": "Cipatat Suka Sima",
+        "Desa/Kelurahan": "Mekarjaya",
+        "Kecamatan": "Pacet",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.6240707,
+          -7.0841958
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Eti",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkbZBiApnalPluLwlT1vWbXKimkbpzRIIhKg&s",
+        "halaman": "CurugEti.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Loa",
+        "Kecamatan": "Paseh",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.5702614,
+          -7.0688721
+        ]
+      },
+      "properties": {
+        "Nama": "Mata Air Campaka",
+        "Kategori": "Scenery",
+        "Popularity": "popular",
+        "gambar": "https://awsimages.detik.net.id/community/media/visual/2021/09/22/mata-air-campaka-2.jpeg?w=1200",
+        "halaman": "Campaka.html",
+        "Jalan": null,
+        "Desa/Kelurahan": "Drawati",
+        "Kecamatan": "Paseh",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": null
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          107.59849,
+          -7.0490921
+        ]
+      },
+      "properties": {
+        "Nama": "Curug Akub",
+        "Kategori": "Waterfall",
+        "Popularity": "popular",
+        "gambar": "https://lh3.googleusercontent.com/p/AF1QipOI1U7Z6tAgGM-VOzZHVym_MadIK7SjhtGqfnqR=w289-h312-n-k-no",
+        "halaman": "CurugAkub.html",
+        "Jalan": "Curug",
+        "Desa/Kelurahan": "Wargamekar",
+        "Kecamatan": "Baleendah",
+        "Kabupaten/Kota": "Kabupaten Bandung",
+        "Provinsi": "Jawa Barat",
+        "Kontak": "83820092808"
+      }
+    }
+  ]
+}

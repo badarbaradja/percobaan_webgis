@@ -1,0 +1,250 @@
+/* HTML/routing.css */
+
+:root {
+    --primary: #6366F1;
+    --primary-dark: #4F46E5;
+    --bg-surface: #FFFFFF;
+    --bg-input: #F3F4F6;
+    --text-main: #1F2937;
+    --text-muted: #6B7280;
+    --border: #E5E7EB;
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
+}
+
+body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; color: var(--text-main); background: #f8fafc; overflow: hidden; }
+
+#map { position: absolute; top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; z-index: 1; }
+
+/* === SIMPLE SEARCH BAR === */
+.simple-search-container {
+    position: absolute; top: 20px; left: 20px; z-index: 1000;
+    width: 340px; background: var(--bg-surface);
+    border-radius: 24px; box-shadow: var(--shadow-card);
+    display: flex; align-items: center; padding: 4px 16px;
+    transition: all 0.3s ease;
+}
+.simple-search-input {
+    flex: 1; border: none; padding: 12px 0; font-size: 14px;
+    outline: none; color: var(--text-main); font-family: 'Inter', sans-serif;
+}
+.search-icon-btn {
+    color: var(--text-muted); font-size: 18px; cursor: pointer;
+    padding: 8px; border-radius: 50%; transition: background 0.2s;
+}
+.search-icon-btn:hover { background: var(--bg-input); color: var(--primary); }
+
+/* === ROUTING PANEL === */
+.routing-panel {
+    position: absolute; top: 20px; left: 20px; z-index: 1001;
+    background: var(--bg-surface); width: 340px;
+    border-radius: var(--radius); box-shadow: var(--shadow-card);
+    padding: 16px; display: none; flex-direction: column; gap: 12px;
+    animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+.panel-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.back-btn {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 18px; color: var(--text-main); padding: 4px;
+    border-radius: 50%; display: flex; align-items: center;
+}
+.back-btn:hover { background: var(--bg-input); }
+.panel-title { font-size: 16px; font-weight: 600; }
+
+/* --- INPUTS LAYOUT (BARU: Ada tombol Swap di kanan) --- */
+.route-inputs-layout {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-input);
+    padding: 10px;
+    border-radius: var(--radius);
+}
+
+.inputs-stack {
+    flex: 1; /* Input mengambil sisa ruang */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
+/* Garis konektor titik */
+.connector-line {
+    position: absolute; left: 14px; top: 24px; bottom: 24px;
+    width: 2px; background: #cbd5e1; border-radius: 2px; pointer-events: none; z-index: 0;
+}
+
+.input-row {
+    position: relative;
+    display: flex; align-items: center; gap: 10px; background: white;
+    padding: 8px 36px 8px 12px; /* Padding kanan besar untuk icon */
+    border-radius: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    z-index: 1;
+}
+
+.dot-icon { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.dot-start { border: 2px solid var(--text-muted); background: white; }
+.dot-end { border: 2px solid var(--primary); background: var(--primary); }
+.route-input { border: none; width: 100%; outline: none; font-size: 13px; font-family: 'Inter', sans-serif; }
+
+/* TOMBOL SWAP (BARU) */
+#swapBtn {
+    width: 32px; height: 32px;
+    border: none; background: transparent;
+    border-radius: 50%; cursor: pointer;
+    color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+}
+#swapBtn:hover { background: rgba(99, 102, 241, 0.1); }
+#swapBtn i { font-size: 20px; }
+
+
+/* TOMBOL ACTION DI DALAM INPUT */
+/* Tombol Lokasi Saya (Target) */
+#useMyLocationBtn {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    color: var(--primary); font-size: 18px; cursor: pointer;
+    padding: 4px; border-radius: 4px; transition: all 0.2s;
+}
+#useMyLocationBtn:hover { background: rgba(99, 102, 241, 0.1); }
+
+/* Tombol Clear (X) */
+#clearDestinationBtn {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    color: #9CA3AF; font-size: 18px; cursor: pointer;
+}
+#clearDestinationBtn:hover { color: #6B7280; }
+
+
+/* Mode Selector */
+.mode-selector { display: flex; gap: 4px; justify-content: space-between; margin-top: 4px; }
+.mode-option {
+    flex: 1; padding: 8px; text-align: center; border-radius: 20px; cursor: pointer;
+    font-size: 18px; color: var(--text-muted); background: var(--bg-input); transition: all 0.2s;
+}
+.mode-option input { display: none; }
+.mode-option:has(input:checked) {
+    background: var(--primary); color: white; box-shadow: 0 2px 5px rgba(99, 102, 241, 0.3);
+}
+
+#routeBtn {
+    background: var(--primary); color: white; border: none; padding: 12px;
+    border-radius: 24px; font-weight: 600; cursor: pointer; margin-top: 4px;
+}
+#routeBtn:hover { background: var(--primary-dark); }
+
+/* Suggestions & Panels */
+.suggestions-box {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 8px; max-height: 200px; overflow-y: auto; z-index: 2000;
+}
+.suggestion-item { padding: 10px 16px; font-size: 13px; border-bottom: 1px solid #f1f1f1; cursor: pointer; }
+.suggestion-item:hover { background: var(--bg-input); }
+
+/* Leaflet Routing Hide */
+.leaflet-routing-container { display: none !important; }
+
+/* Directions Toggle */
+#directionsToggle {
+    display: none; width: 100%; padding: 10px; margin-top: 10px;
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    font-size: 12px; font-weight: 600; color: var(--text-main); cursor: pointer;
+    align-items: center; justify-content: center; gap: 6px;
+}
+#directionsPanel {
+    display: none; background: white; margin-top: 10px; padding: 10px;
+    border-radius: 12px; border: 1px solid var(--border); max-height: 40vh; overflow-y: auto; font-size: 12px;
+}
+#directionsPanel.show { display: block; }
+#directionsPanel table { width: 100%; }
+#directionsPanel tr { border-bottom: 1px solid #f1f1f1; }
+#directionsPanel td { padding: 8px 4px; }
+
+/* --- VISUAL LAYER CONTROL --- */
+.layer-fab-container { position: absolute; top: 20px; right: 60px; z-index: 1000; }
+.layer-fab-btn {
+    width: 44px; height: 44px; background: #fff; border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); cursor: pointer; display: flex;
+    align-items: center; justify-content: center; transition: all 0.2s; border: 2px solid white;
+}
+.layer-fab-btn:hover { background: #f8f9fa; }
+.layer-fab-btn i { font-size: 22px; color: #3C4043; }
+
+.layer-menu {
+    position: absolute; top: 55px; right: 0; background: white; padding: 12px;
+    border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    display: none; gap: 12px; flex-direction: row; width: max-content; animation: fadeIn 0.2s ease;
+}
+.layer-menu.show { display: flex; }
+
+.layer-card {
+    width: 60px; height: 60px; border-radius: 10px; border: 1px solid #ccc;
+    cursor: pointer; position: relative; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: transform 0.1s; background-size: cover; background-position: center;
+}
+.layer-card:hover { transform: scale(1.05); }
+.layer-card.active { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3); }
+
+.layer-card span {
+    position: absolute; bottom: -20px; left: 0; right: 0; text-align: center;
+    font-size: 11px; font-weight: 600; color: #3C4043; background: white;
+    padding: 2px 4px; border-radius: 4px; opacity: 0; transition: opacity 0.2s; pointer-events: none;
+}
+.layer-card:hover span { opacity: 1; }
+
+/* GAMBAR LAYER (Agar tidak putih polos) */
+.bg-default { background-image: url('https://help.felt.com/~gitbook/image?url=https%3A%2F%2F217108486-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FmRfGitkyjOEMvVsEyGWN%252Fuploads%252FFbAGffoHOjGTELrOMXF8%252Fimage.png%3Falt%3Dmedia%26token%3D76a1a4b8-f1d2-4efb-8f9b-74f880e9e7b2&width=768&dpr=4&quality=100&sign=7fd30621&sv=2'); background-size: cover; }
+.bg-satellite { background-image: url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/4/5/12'); background-size: cover; }
+.bg-dark { background-image: url('https://a.basemaps.cartocdn.com/dark_all/6/32/24.png'); background-size: cover; }
+
+
+/* --- CONTROLS POSITIONS --- */
+.recenter-btn {
+    position: absolute; bottom: 100px; right: 10px; width: 40px; height: 40px;
+    background: white; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    z-index: 900; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: none; transition: background 0.2s;
+}
+.recenter-btn:hover { background: #f1f1f1; }
+.recenter-btn i { font-size: 20px; color: #666; }
+
+.leaflet-control-fullscreen {
+    position: absolute !important; bottom: 20px; left: 20px;
+    top: auto !important; right: auto !important; margin: 0 !important; z-index: 900;
+}
+.leaflet-control-fullscreen a {
+    width: 40px !important; height: 40px !important; border-radius: 50% !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important; background-color: white !important;
+}
+
+.user-marker-pulse {
+    width: 20px; height: 20px; background: #4285F4; border: 3px solid white;
+    border-radius: 50%; box-shadow: 0 0 0 10px rgba(66, 133, 244, 0.3);
+    animation: pulse-blue 2s infinite;
+}
+@keyframes pulse-blue {
+    0% { box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(66, 133, 244, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(66, 133, 244, 0); }
+}
+
+/* Markers */
+.clean-marker {
+    border-radius: 50%; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 16px;
+}
+.marker-nature { background: #10B981; }
+.marker-history { background: #F59E0B; }
+.marker-culinary { background: #EF4444; }
+.marker-recreation { background: #3B82F6; }
+
+@media (max-width: 480px) {
+    .simple-search-container, .routing-panel { width: 90%; left: 5%; top: 10px; }
+}

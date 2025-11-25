@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Interaktif WebGIS</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="routing.css">
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <div class="simple-search-container" id="simpleSearchContainer">
+        <i class="ri-menu-line search-icon-btn" style="margin-right: 8px;" onclick="openNavPanel()"></i>
+        <input type="text" class="simple-search-input" id="globalSearch" placeholder="Cari tujuan wisata di sini...">
+        <i class="ri-search-2-line search-icon-btn"></i>
+        <div id="globalSuggestions" class="suggestions-box" style="display:none;"></div>
+    </div>
+
+    <div class="routing-panel" id="routingPanel">
+        <div class="panel-header">
+            <button class="back-btn" id="closeRoutingBtn"><i class="ri-arrow-left-line"></i></button>
+            <span class="panel-title">Rute & Navigasi</span>
+        </div>
+
+        <div class="route-inputs-layout">
+            <div class="inputs-stack">
+                <div class="connector-line"></div>
+                
+                <div class="input-row">
+                    <div class="dot-icon dot-start"></div>
+                    <input type="text" class="route-input" id="startLocation" placeholder="Pilih titik awal">
+                    <i class="ri-crosshair-2-fill" id="useMyLocationBtn" title="Gunakan Lokasi Saya Saat Ini"></i>
+                </div>
+                <div id="startSuggestions" class="suggestions-box" style="display:none;"></div>
+
+                <div class="input-row">
+                    <div class="dot-icon dot-end"></div>
+                    <input type="text" class="route-input" id="endLocation" placeholder="Tujuan...">
+                    <i class="ri-close-circle-fill" id="clearDestinationBtn" title="Hapus Tujuan"></i>
+                </div>
+                <div id="endSuggestions" class="suggestions-box" style="display:none;"></div>
+            </div>
+
+            <button id="swapBtn" title="Tukar Lokasi">
+                <i class="ri-arrow-up-down-line"></i>
+            </button>
+        </div>
+
+        <div class="mode-selector">
+            <label class="mode-option"><input type="radio" name="vehicle" value="car" checked><i class="ri-roadster-fill"></i></label>
+            <label class="mode-option"><input type="radio" name="vehicle" value="motorcycle"><i class="ri-motorbike-fill"></i></label>
+            <label class="mode-option"><input type="radio" name="vehicle" value="foot"><i class="ri-walk-fill"></i></label>
+        </div>
+
+        <button id="routeBtn">Mulai Navigasi</button>
+        <button id="directionsToggle"><i class="ri-file-list-3-line"></i> Lihat Langkah-langkah</button>
+        <div id="directionsPanel"></div>
+    </div>
+
+    <div class="layer-fab-container">
+        <div class="layer-fab-btn" onclick="toggleLayerMenu()" title="Ganti Tampilan Peta">
+            <i class="ri-layers-fill"></i>
+        </div>
+        <div class="layer-menu" id="layerMenu">
+            <div class="layer-card bg-default active" onclick="changeLayer('default', this)">
+                <span>Default</span>
+            </div>
+            <div class="layer-card bg-satellite" onclick="changeLayer('satellite', this)">
+                <span>Satelit</span>
+            </div>
+            <div class="layer-card bg-dark" onclick="changeLayer('dark', this)">
+                <span>Malam</span>
+            </div>
+        </div>
+    </div>
+
+    <button class="recenter-btn" onclick="recenterMap()" title="Kembali ke Lokasi Saya">
+        <i class="ri-crosshair-2-fill"></i>
+    </button>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+
+    <script src="routing.js"></script>
+</body>
+</html>
