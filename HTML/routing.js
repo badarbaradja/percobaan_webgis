@@ -50,7 +50,15 @@ const appState = {
     routeData: null,
     markerCluster: L.markerClusterGroup(),
     currentCategory: 'all',
-    allMarkers: []
+    allMarkers: [],
+    isNavigating: false,
+    selectedRouteIndex: 0,
+    currentStepIndex: 0,
+    watchId: null,
+    userHeading: 0,
+    isTrackingLocation: false,
+    routeCoordinates: [],
+    distanceToNextTurn: 0
 };
 
 // Tourist Data Storage
@@ -601,7 +609,12 @@ async function calculateRoute() {
 
         if (data.paths && data.paths.length > 0) {
             displayRoutes(data.paths);
-            console.log(`✅ Found ${data.paths.length} routes`);
+            const mainNavBtn = document.getElementById('mainNavBtn');
+    const mainNavText = document.getElementById('mainNavText');
+    mainNavBtn.onclick = startNavigation; // Ganti handler
+    mainNavText.textContent = 'Mulai Navigasi';
+    
+    console.log(`✅ Found ${data.paths.length} routes`);
         } else {
             throw new Error(data.message || 'No route found');
         }
@@ -624,75 +637,446 @@ function getGraphHopperProfile(mode) {
 }
 
 function displayRoutes(paths) {
-    // 1. Bersihkan rute lama jika ada
+    // 1. Bersihkan rute lama
     if (appState.routePolylines && appState.routePolylines.length > 0) {
         appState.routePolylines.forEach(poly => map.removeLayer(poly));
     }
-    appState.routePolylines = []; // Reset array
+    appState.routePolylines = [];
 
-    // 2. Loop semua rute yang dikasih API
+    // 2. Simpan semua paths untuk reference
+    appState.allRoutePaths = paths;
+
+    // 3. Gambar semua rute
     paths.forEach((path, index) => {
         const coordinates = decodePolyline(path.points);
-        const isMainRoute = index === 0; // Rute pertama dianggap rute utama
+        const isMainRoute = index === 0;
 
-        // Style untuk rute Utama vs Alternatif
         const routeStyle = isMainRoute ? {
-            color: '#1A73E8',     // Biru terang
-            weight: 7,            // Lebih tebal
+            color: '#1A73E8',
+            weight: 7,
             opacity: 0.9
         } : {
-            color: '#9AA0A6',     // Abu-abu
-            weight: 6,            // Sedikit tebal agar mudah diklik
+            color: '#9AA0A6',
+            weight: 6,
             opacity: 0.7,
-            dashArray: '10, 10'   // Putus-putus
+            dashArray: '10, 10'
         };
 
-        // Gambar Garis
         const polyline = L.polyline(coordinates, routeStyle).addTo(map);
-        
-        // Tambahkan data path ke object polyline biar bisa diakses saat diklik
-        polyline.routeData = path; 
+        polyline.routeData = path;
+        polyline.routeIndex = index;
 
-        // 3. Event Listener: Saat rute alternatif diklik, jadikan utama
+        // Event click untuk switch rute
         polyline.on('click', function(e) {
-            // Reset style semua rute jadi abu-abu
-            appState.routePolylines.forEach(p => {
-                p.setStyle({ color: '#9AA0A6', weight: 6, opacity: 0.7, dashArray: '10, 10' });
-            });
-
-            // Set style rute yang diklik jadi biru (aktif) dan taruh di paling atas
-            this.setStyle({ color: '#1A73E8', weight: 7, opacity: 0.9, dashArray: null });
-            this.bringToFront(); 
-
-            // Update Info Panel (Jarak & Waktu) sesuai rute yang dipilih
-            displayRouteSummary(this.routeData);
-            
-            // Simpan rute aktif ke state
-            appState.routeData = this.routeData;
-            
-            // Tampilkan direction list yang sesuai
-            if (document.getElementById('directionsContainer').classList.contains('show')) {
-                 displayDirections(this.routeData.instructions);
-            }
+            selectRoute(this.routeIndex);
         });
-        
-        // Simpan ke array state
+
         appState.routePolylines.push(polyline);
     });
 
-    // 4. Fokuskan peta ke rute utama dan pastikan rute utama ada di paling atas
+    // 4. Fokus ke rute pertama
     if (appState.routePolylines.length > 0) {
         const mainRoute = appState.routePolylines[0];
-        mainRoute.bringToFront(); // Pastikan rute utama di layer paling atas
+        mainRoute.bringToFront();
         map.fitBounds(mainRoute.getBounds(), { padding: [50, 50] });
         
-        // Tampilkan info rute utama di panel
-        displayRouteSummary(paths[0]);
+        appState.selectedRouteIndex = 0;
         appState.routeData = paths[0];
+        appState.routeCoordinates = decodePolyline(paths[0].points);
         
-        // Munculkan tombol navigasi
+        displayRouteSummary(paths[0]);
+        
+        // Tampilkan Route Selector UI
+        displayRouteSelector(paths);
+        
+        // Update button navigasi
+        const mainNavBtn = document.getElementById('mainNavBtn');
+        const mainNavText = document.getElementById('mainNavText');
+        mainNavBtn.onclick = startNavigation;
+        mainNavText.textContent = 'Mulai Navigasi';
+        mainNavBtn.classList.remove('btn-danger');
+        mainNavBtn.classList.add('btn-primary');
+        
         document.getElementById('directionsBtn').style.display = 'flex';
     }
+}
+// Fungsi untuk menampilkan selector rute (seperti Google Maps)
+function displayRouteSelector(paths) {
+    // Hapus selector lama jika ada
+    let existingSelector = document.getElementById('routeSelector');
+    if (existingSelector) {
+        existingSelector.remove();
+    }
+
+    // Buat container selector
+    const selector = document.createElement('div');
+    selector.id = 'routeSelector';
+    selector.className = 'route-selector';
+    
+    paths.forEach((path, index) => {
+        const distanceKm = (path.distance / 1000).toFixed(1);
+        const durationMin = Math.round(path.time / 1000 / 60);
+        const hours = Math.floor(durationMin / 60);
+        const minutes = durationMin % 60;
+        
+        let timeText = hours > 0 ? `${hours}j ${minutes}m` : `${minutes}m`;
+        
+        const routeCard = document.createElement('div');
+        routeCard.className = `route-card ${index === 0 ? 'active' : ''}`;
+        routeCard.dataset.index = index;
+        routeCard.innerHTML = `
+            <div class="route-card-header">
+                <div class="route-badge">Rute ${index + 1}</div>
+                ${index === 0 ? '<div class="route-recommended">Tercepat</div>' : ''}
+            </div>
+            <div class="route-card-body">
+                <div class="route-time">${timeText}</div>
+                <div class="route-distance">${distanceKm} km</div>
+            </div>
+        `;
+        
+        routeCard.onclick = () => selectRoute(index);
+        selector.appendChild(routeCard);
+    });
+    
+    // Insert setelah route summary
+    const routeSummary = document.getElementById('routeSummary');
+    routeSummary.parentNode.insertBefore(selector, routeSummary.nextSibling);
+}
+
+// Fungsi untuk memilih rute
+function selectRoute(index) {
+    appState.selectedRouteIndex = index;
+    appState.routeData = appState.allRoutePaths[index];
+    appState.routeCoordinates = decodePolyline(appState.routeData.points);
+    
+    // Update style semua polyline
+    appState.routePolylines.forEach((poly, i) => {
+        if (i === index) {
+            poly.setStyle({ 
+                color: '#1A73E8', 
+                weight: 7, 
+                opacity: 0.9, 
+                dashArray: null 
+            });
+            poly.bringToFront();
+        } else {
+            poly.setStyle({ 
+                color: '#9AA0A6', 
+                weight: 6, 
+                opacity: 0.7, 
+                dashArray: '10, 10' 
+            });
+        }
+    });
+    
+    // Update UI
+    displayRouteSummary(appState.routeData);
+    
+    // Update active card
+    document.querySelectorAll('.route-card').forEach((card, i) => {
+        card.classList.toggle('active', i === index);
+    });
+    
+    // Update directions jika sedang ditampilkan
+    if (document.getElementById('directionsContainer').classList.contains('show')) {
+        displayDirections(appState.routeData.instructions);
+    }
+    
+    console.log(`✓ Route ${index + 1} selected`);
+}
+
+// Fungsi untuk memulai navigasi (Mode On Drive)
+function startNavigation() {
+    if (!appState.routeData) {
+        alert('⚠️ Pilih rute terlebih dahulu');
+        return;
+    }
+    
+    appState.isNavigating = true;
+    appState.currentStepIndex = 0;
+    
+    // Update UI ke Navigation Mode
+    document.body.classList.add('navigation-active');
+    
+    // Sembunyikan elemen yang tidak perlu
+    document.getElementById('routeSelector')?.remove();
+    document.getElementById('routeSummary').style.display = 'none';
+    document.getElementById('directionsBtn').style.display = 'none';
+    
+    // Update button jadi Stop Navigation
+    const mainNavBtn = document.getElementById('mainNavBtn');
+    const mainNavText = document.getElementById('mainNavText');
+    mainNavBtn.onclick = stopNavigation;
+    mainNavText.textContent = 'Hentikan Navigasi';
+    mainNavBtn.classList.remove('btn-primary');
+    mainNavBtn.classList.add('btn-danger');
+    
+    // Buat Navigation HUD
+    createNavigationHUD();
+    
+    // Mulai tracking lokasi real-time
+    startLocationTracking();
+    
+    // Zoom ke posisi user
+    if (appState.startCoords) {
+        map.setView([appState.startCoords.lat, appState.startCoords.lon], 17);
+    }
+    
+    console.log('🚗 Navigation started!');
+}
+
+// Fungsi untuk stop navigasi
+function stopNavigation() {
+    appState.isNavigating = false;
+    
+    // Hentikan tracking
+    stopLocationTracking();
+    
+    // Reset UI
+    document.body.classList.remove('navigation-active');
+    
+    // Hapus Navigation HUD
+    document.getElementById('navigationHUD')?.remove();
+    
+    // Tampilkan kembali panel routing normal
+    document.getElementById('routeSummary').style.display = 'flex';
+    
+    // Update button
+    const mainNavBtn = document.getElementById('mainNavBtn');
+    const mainNavText = document.getElementById('mainNavText');
+    mainNavBtn.onclick = startNavigation;
+    mainNavText.textContent = 'Mulai Navigasi';
+    mainNavBtn.classList.remove('btn-danger');
+    mainNavBtn.classList.add('btn-primary');
+    
+    // Reset map bearing
+    map.setBearing(0);
+    
+    console.log('🛑 Navigation stopped');
+}
+
+// Fungsi untuk membuat Navigation HUD (Waze-like)
+function createNavigationHUD() {
+    // Hapus HUD lama jika ada
+    document.getElementById('navigationHUD')?.remove();
+    
+    const hud = document.createElement('div');
+    hud.id = 'navigationHUD';
+    hud.className = 'navigation-hud';
+    hud.innerHTML = `
+        <div class="hud-main">
+            <div class="hud-icon">
+                <i class="ri-arrow-up-line" id="hudTurnIcon"></i>
+            </div>
+            <div class="hud-info">
+                <div class="hud-distance" id="hudDistance">Menghitung...</div>
+                <div class="hud-instruction" id="hudInstruction">Memulai navigasi...</div>
+            </div>
+        </div>
+        <div class="hud-secondary">
+            <div class="hud-eta">
+                <i class="ri-time-line"></i>
+                <span id="hudEta">--:--</span>
+            </div>
+            <div class="hud-remaining">
+                <i class="ri-map-pin-line"></i>
+                <span id="hudRemaining">-- km</span>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(hud);
+}
+
+// Fungsi untuk start location tracking
+function startLocationTracking() {
+    if (!navigator.geolocation) {
+        alert('❌ Browser tidak mendukung geolocation');
+        return;
+    }
+    
+    appState.isTrackingLocation = true;
+    
+    // Options untuk high accuracy tracking
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+    
+    // Watch position real-time
+    appState.watchId = navigator.geolocation.watchPosition(
+        onLocationUpdate,
+        onLocationError,
+        options
+    );
+    
+    console.log('📍 Location tracking started');
+}
+
+// Fungsi untuk stop location tracking
+function stopLocationTracking() {
+    if (appState.watchId !== null) {
+        navigator.geolocation.clearWatch(appState.watchId);
+        appState.watchId = null;
+        appState.isTrackingLocation = false;
+        console.log('📍 Location tracking stopped');
+    }
+}
+
+// Callback saat lokasi update (INI YANG PENTING!)
+function onLocationUpdate(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const accuracy = position.coords.accuracy;
+    const heading = position.coords.heading; // Arah kompas (jika tersedia)
+    
+    // Update koordinat user
+    appState.startCoords = { lat, lon };
+    
+    // Update heading jika tersedia
+    if (heading !== null && heading !== undefined) {
+        appState.userHeading = heading;
+    }
+    
+    // Update marker posisi user
+    updateUserLocationMarker(lat, lon);
+    
+    // Jika sedang navigasi, update peta mengikuti user
+    if (appState.isNavigating) {
+        // Peta mengikuti user dengan smooth animation
+        map.flyTo([lat, lon], 17, {
+            duration: 0.5,
+            animate: true
+        });
+        
+        // Rotasi peta sesuai arah perjalanan (optional, bisa diaktifkan)
+        // Uncomment jika ingin peta rotate seperti Waze
+        // if (heading !== null && heading !== undefined) {
+        //     map.setBearing(heading);
+        // }
+        
+        // Update Navigation HUD
+        updateNavigationHUD(lat, lon);
+        
+        // Cek apakah user sudah sampai di tujuan
+        checkArrival(lat, lon);
+    }
+    
+    console.log(`📍 Position updated: ${lat.toFixed(6)}, ${lon.toFixed(6)} (±${accuracy}m)`);
+}
+
+// Callback error geolocation
+function onLocationError(error) {
+    console.error('❌ Geolocation error:', error.message);
+    
+    if (error.code === error.PERMISSION_DENIED) {
+        alert('❌ Akses lokasi ditolak. Aktifkan izin lokasi untuk navigasi.');
+        stopNavigation();
+    }
+}
+
+// Update Navigation HUD dengan data real-time
+function updateNavigationHUD(userLat, userLon) {
+    if (!appState.routeData || !appState.routeData.instructions) return;
+    
+    const instructions = appState.routeData.instructions;
+    const currentStep = instructions[appState.currentStepIndex];
+    
+    if (!currentStep) return;
+    
+    // Hitung jarak ke instruksi berikutnya
+    const stepCoords = appState.routeCoordinates[appState.currentStepIndex];
+    if (stepCoords) {
+        const distance = calculateDistance(
+            userLat, userLon,
+            stepCoords[0], stepCoords[1]
+        );
+        
+        appState.distanceToNextTurn = distance;
+        
+        // Update icon berdasarkan tipe belok
+        const icon = getInstructionIcon(currentStep.sign);
+        document.getElementById('hudTurnIcon').className = icon;
+        
+        // Update jarak
+        const distanceText = distance < 1000 
+            ? `${Math.round(distance)} m` 
+            : `${(distance / 1000).toFixed(1)} km`;
+        document.getElementById('hudDistance').textContent = distanceText;
+        
+        // Update instruksi
+        document.getElementById('hudInstruction').textContent = currentStep.text;
+        
+        // Jika sudah dekat dengan turn point (< 30m), pindah ke step berikutnya
+        if (distance < 30 && appState.currentStepIndex < instructions.length - 1) {
+            appState.currentStepIndex++;
+            console.log(`➡️ Moving to step ${appState.currentStepIndex + 1}`);
+        }
+    }
+    
+    // Update ETA dan jarak tersisa
+    updateNavigationStats(userLat, userLon);
+}
+
+// Update stats navigasi (ETA dan jarak tersisa)
+function updateNavigationStats(userLat, userLon) {
+    if (!appState.routeCoordinates || appState.routeCoordinates.length === 0) return;
+    
+    // Hitung jarak tersisa ke tujuan
+    const destination = appState.routeCoordinates[appState.routeCoordinates.length - 1];
+    const remainingDistance = calculateDistance(
+        userLat, userLon,
+        destination[0], destination[1]
+    );
+    
+    // Update remaining distance
+    const remainingKm = (remainingDistance / 1000).toFixed(1);
+    document.getElementById('hudRemaining').textContent = `${remainingKm} km`;
+    
+    // Estimasi waktu tiba (asumsi kecepatan rata-rata dari route data)
+    const avgSpeed = appState.selectedMode === 'car' ? 40 : 
+                     appState.selectedMode === 'bike' ? 15 : 5; // km/h
+    const remainingHours = remainingDistance / 1000 / avgSpeed;
+    const eta = new Date(Date.now() + remainingHours * 3600000);
+    
+    document.getElementById('hudEta').textContent = 
+        eta.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+}
+
+// Fungsi untuk cek apakah sudah sampai tujuan
+function checkArrival(userLat, userLon) {
+    if (!appState.endCoords) return;
+    
+    const distanceToDestination = calculateDistance(
+        userLat, userLon,
+        appState.endCoords.lat, appState.endCoords.lon
+    );
+    
+    // Jika jarak < 50 meter, anggap sudah sampai
+    if (distanceToDestination < 50) {
+        alert('🎉 Anda telah sampai di tujuan!');
+        stopNavigation();
+    }
+}
+
+// Utility: Hitung jarak antara 2 koordinat (Haversine formula)
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371000; // Radius bumi dalam meter
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+}
+
+function toRad(degrees) {
+    return degrees * (Math.PI / 180);
 }
 
 function displayRouteSummary(path) {
@@ -798,18 +1182,18 @@ function displayDirections(instructions) {
 
 function getInstructionIcon(sign) {
     const icons = {
-        '-7': 'ri-arrow-left-line',
-        '-3': 'ri-arrow-left-line',
-        '-2': 'ri-arrow-left-line',
-        '-1': 'ri-arrow-left-line',
-        0: 'ri-arrow-up-line',
-        1: 'ri-arrow-right-line',
-        2: 'ri-arrow-right-line',
-        3: 'ri-arrow-right-line',
-        4: 'ri-checkbox-blank-circle-fill',
-        5: 'ri-checkbox-blank-circle-fill',
-        6: 'ri-arrow-right-up-line',
-        7: 'ri-arrow-right-down-line'
+        '-7': 'ri-arrow-left-line',      // Sharp left
+        '-3': 'ri-arrow-left-line',      // Left
+        '-2': 'ri-arrow-left-s-line',    // Slight left
+        '-1': 'ri-arrow-left-s-line',    // Keep left
+        0: 'ri-arrow-up-line',           // Straight
+        1: 'ri-arrow-right-s-line',      // Keep right
+        2: 'ri-arrow-right-s-line',      // Slight right
+        3: 'ri-arrow-right-line',        // Right
+        4: 'ri-map-pin-fill',            // Destination
+        5: 'ri-map-pin-fill',            // Waypoint
+        6: 'ri-arrow-right-up-line',     // Roundabout right
+        7: 'ri-arrow-right-down-line'    // Roundabout left
     };
     return icons[sign] || 'ri-arrow-up-line';
 }
