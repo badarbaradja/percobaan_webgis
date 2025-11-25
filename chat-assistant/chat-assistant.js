@@ -4,17 +4,12 @@
 // ================================================
 
 const CONFIG_AI = {
-    // Kunci API dari Google Cloud Console (yang Anda buat di screenshot tadi)
-    API_KEY: 'AIzaSyBnJRCEBWHoZX0tywVUchKchVtgrNYNbss', 
+    API_KEY: 'AIzaSyANBgHwdE8MKxeWy3Rg4ruOraJn70-3RWg', // API Key Anda
+    MODEL_TARGET: 'gemini-2.5-flash',
     
-    // Versi API (WAJIB ADA agar link URL-nya lengkap)
-    API_VERSION: 'v1beta',
-    
-    // Daftar model yang akan dicoba (WAJIB ADA agar looping-nya jalan)
-    MODELS_TO_TRY: ['gemini-1.5-flash', 'gemini-pro', 'gemini-1.5-pro'], 
-    
-    // Target model utama
-    MODEL_TARGET: 'gemini-1.5-flash'
+    // PERBAIKAN: Tambahkan dua properti di bawah ini agar kode jalan
+    API_VERSION: 'v1beta', 
+    MODELS_TO_TRY: ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'] 
 };
 
 class BandungTravelAssistant {
