@@ -4,8 +4,12 @@
 // ================================================
 
 const CONFIG_AI = {
-    API_KEY: 'AIzaSyC_StPWNR4PoBIJ1Q3hBQQaV1wcV7S139s', 
-    MODEL_TARGET: 'gemini-2.5-flash' 
+    API_KEY: 'AIzaSyC_StPWNR4PoBIJ1Q3hBQQaV1wcV7S139s', // API Key Anda
+    MODEL_TARGET: 'gemini-2.5-flash',
+    
+    // PERBAIKAN: Tambahkan dua properti di bawah ini agar kode jalan
+    API_VERSION: 'v1beta', 
+    MODELS_TO_TRY: ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'] 
 };
 
 class BandungTravelAssistant {
