@@ -4,7 +4,7 @@
 // ================================================
 
 const CONFIG_AI = {
-    API_KEY: 'AIzaSyC_StPWNR4PoBIJ1Q3hBQQaV1wcV7S139s', // API Key Anda
+    API_KEY: 'AIzaSyBnJRCEBWHoZX0tywVUchKchVtgrNYNbss', // API Key Anda
     MODEL_TARGET: 'gemini-2.5-flash',
     
     // PERBAIKAN: Tambahkan dua properti di bawah ini agar kode jalan
