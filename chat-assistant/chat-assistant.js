@@ -96,79 +96,48 @@ class BandungTravelAssistant {
         return context;
     }
 
+    // GANTI SATU BLOK FUNGSI INI:
     async tryGenerateWithFallback(prompt) {
-        let lastError = null;
+        try {
+            console.log('🔄 Mengirim request ke Proxy Cloudflare...');
+            
+            // KITA PAKAI PROXY_URL, BUKAN GOOGLE DIRECT
+            const response = await fetch(CONFIG_AI.PROXY_URL, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: prompt }) // Kirim prompt ke worker
+            });
 
-        for (const modelName of CONFIG_AI.MODELS_TO_TRY) {
-            try {
-                console.log(`🔄 Trying model: ${modelName}`);
-                
-                // Gunakan v1beta dengan format yang benar
-                const url = `https://generativelanguage.googleapis.com/${CONFIG_AI.API_VERSION}/models/${modelName}:generateContent?key=${CONFIG_AI.API_KEY}`;
-                
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        contents: [{
-                            parts: [{
-                                text: prompt
-                            }]
-                        }],
-                        generationConfig: {
-                            temperature: 0.7,
-                            topK: 40,
-                            topP: 0.95,
-                            maxOutputTokens: 500
-                        },
-                        safetySettings: [
-                            {
-                                category: "HARM_CATEGORY_HARASSMENT",
-                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
-                            },
-                            {
-                                category: "HARM_CATEGORY_HATE_SPEECH",
-                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
-                            }
-                        ]
-                    })
-                });
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    console.warn(`Response not OK: ${response.status}`, errorText);
-                    throw new Error(`HTTP ${response.status}: ${errorText}`);
-                }
-
-                const data = await response.json();
-                
-                // Validasi response
-                if (!data.candidates || data.candidates.length === 0) {
-                    throw new Error('No candidates in response');
-                }
-
-                const candidate = data.candidates[0];
-                if (!candidate.content || !candidate.content.parts || candidate.content.parts.length === 0) {
-                    throw new Error('Invalid response structure');
-                }
-
-                console.log(`✅ Success with model: ${modelName}`);
-                return { 
-                    success: true, 
-                    text: candidate.content.parts[0].text,
-                    modelUsed: modelName 
-                };
-
-            } catch (error) {
-                console.warn(`⚠️ Model ${modelName} failed:`, error.message);
-                lastError = error;
-                // Continue to next model
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`HTTP ${response.status}: ${errorText}`);
             }
-        }
 
-        throw lastError || new Error('All models failed');
+            const data = await response.json();
+            
+            // Validasi response
+            if (!data.candidates || data.candidates.length === 0) {
+                throw new Error('No candidates in response');
+            }
+
+            const candidate = data.candidates[0];
+            if (!candidate.content || !candidate.content.parts || candidate.content.parts.length === 0) {
+                throw new Error('Invalid response structure');
+            }
+
+            console.log('✅ Sukses dari Proxy!');
+            return { 
+                success: true, 
+                text: candidate.content.parts[0].text,
+                modelUsed: 'via-proxy' 
+            };
+
+        } catch (error) {
+            console.error('❌ Proxy Error:', error.message);
+            throw error;
+        }
     }
 
     async sendMessage(userMessage) {
