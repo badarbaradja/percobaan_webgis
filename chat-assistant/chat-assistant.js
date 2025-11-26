@@ -8,7 +8,7 @@ const CONFIG_AI = {
     PROXY_URL: 'https://gemini-proxy-bandung.badarbaradja112.workers.dev/', 
     
     // Model target (Logika pemilihan model sebenarnya ada di Backend/Worker)
-    MODEL_TARGET: 'gemini-1.5-flash' 
+    MODEL_TARGET: 'gemini-2.5-flash' 
 };
 
 class BandungTravelAssistant {
