@@ -1,15 +1,14 @@
 // ================================================
-// AI CHAT ASSISTANT - WebGIS Bandung - WORKING VERSION
-// Powered by Google Gemini API
+// AI CHAT ASSISTANT - WebGIS Bandung - FIXED VERSION
+// Powered by Google Gemini API via Cloudflare Proxy
 // ================================================
 
 const CONFIG_AI = {
-    PROXY_URL: 'https://gemini-proxy-bandung.badarbaradja112.workers.dev/', // API Key Anda
-    MODEL_TARGET: 'gemini-2.5-flash',
+    // URL Backend Cloudflare Worker Kamu
+    PROXY_URL: 'https://gemini-proxy-bandung.badarbaradja112.workers.dev/', 
     
-    // PERBAIKAN: Tambahkan dua properti di bawah ini agar kode jalan
-    API_VERSION: 'v1beta', 
-    MODELS_TO_TRY: ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'] 
+    // Model target (Logika pemilihan model sebenarnya ada di Backend/Worker)
+    MODEL_TARGET: 'gemini-1.5-flash' 
 };
 
 class BandungTravelAssistant {
@@ -23,6 +22,7 @@ class BandungTravelAssistant {
     async loadTouristData() {
         try {
             console.log('📄 Loading tourist data...');
+            // Menggunakan path relative yang aman
             const paths = [
                 'GEOJSON/LokasiWisataAlamBandung.json',
                 'GEOJSON/LokasiWisataBudayaBandung.json', 
@@ -34,12 +34,19 @@ class BandungTravelAssistant {
             
             for (const path of paths) {
                 try {
-                    const response = await fetch(path);
+                    // Coba fetch, handle jika path berbeda di live server vs local
+                    let response = await fetch(path);
+                    if (!response.ok) {
+                        // Fallback jika folder structure berbeda (misal di root HTML)
+                        response = await fetch('../' + path);
+                    }
+                    
                     if (response.ok) {
                         const data = await response.json();
                         loadedData.push(data.features || []);
                         console.log(`✅ Loaded ${path}`);
                     } else {
+                        console.warn(`⚠️ Failed to load ${path}`);
                         loadedData.push([]);
                     }
                 } catch (error) {
@@ -79,7 +86,8 @@ class BandungTravelAssistant {
         const processFeatures = (features, category) => {
             if (!features || features.length === 0) return '';
             let str = `\n${category}:\n`;
-            features.slice(0, 8).forEach(f => {
+            // Batasi data context agar tidak terlalu besar (token limit)
+            features.slice(0, 15).forEach(f => {
                 const p = f.properties;
                 if (p && p.Nama) {
                     str += `- ${p.Nama} (${p.Kecamatan || 'Bandung'})\n`;
@@ -96,18 +104,18 @@ class BandungTravelAssistant {
         return context;
     }
 
-    // GANTI SATU BLOK FUNGSI INI:
+    // --- BAGIAN YANG DIPERBAIKI ---
+    // Fungsi ini sekarang memanggil Proxy, bukan Google langsung
     async tryGenerateWithFallback(prompt) {
         try {
-            console.log('🔄 Mengirim request ke Proxy Cloudflare...');
+            console.log('🔄 Sending request to Proxy Cloudflare...');
             
-            // KITA PAKAI PROXY_URL, BUKAN GOOGLE DIRECT
             const response = await fetch(CONFIG_AI.PROXY_URL, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ prompt: prompt }) // Kirim prompt ke worker
+                body: JSON.stringify({ prompt: prompt })
             });
 
             if (!response.ok) {
@@ -117,9 +125,14 @@ class BandungTravelAssistant {
 
             const data = await response.json();
             
-            // Validasi response
+            // Cek jika backend mengembalikan error
+            if (data.error) {
+                throw new Error(data.error.message || data.error);
+            }
+
+            // Validasi struktur response Gemini
             if (!data.candidates || data.candidates.length === 0) {
-                throw new Error('No candidates in response');
+                throw new Error('No candidates in response (AI tidak memberikan jawaban)');
             }
 
             const candidate = data.candidates[0];
@@ -127,18 +140,19 @@ class BandungTravelAssistant {
                 throw new Error('Invalid response structure');
             }
 
-            console.log('✅ Sukses dari Proxy!');
+            console.log('✅ Success receive answer from AI!');
             return { 
                 success: true, 
                 text: candidate.content.parts[0].text,
-                modelUsed: 'via-proxy' 
+                modelUsed: 'gemini-1.5-flash (via proxy)'
             };
 
         } catch (error) {
-            console.error('❌ Proxy Error:', error.message);
+            console.error('❌ AI Generation Failed:', error.message);
             throw error;
         }
     }
+    // -------------------------------
 
     async sendMessage(userMessage) {
         if (this.isProcessing) {
@@ -146,33 +160,37 @@ class BandungTravelAssistant {
         }
         
         if (!this.initialized) {
-            return { error: 'AI sedang loading, coba lagi...' };
+            return { error: 'AI sedang memuat data wisata, coba lagi dalam beberapa detik...' };
         }
 
         this.isProcessing = true;
-        console.log('🔄 Processing:', userMessage);
+        console.log('🔄 Processing user message:', userMessage);
 
         try {
             const context = this.prepareContextData();
             
-            const prompt = `Kamu adalah BandungBot, asisten wisata Bandung yang ramah dan helpful.
+            // Prompt Engineering
+            const prompt = `Kamu adalah BandungBot, asisten wisata digital untuk Kota Bandung yang ramah, gaul, dan sangat membantu.
 
+DATA WISATA YANG KAMU TAHU:
 ${context}
 
-INSTRUKSI:
-- Jawab dalam Bahasa Indonesia yang friendly & casual
-- Rekomendasikan tempat dari database di atas
-- Kalau tidak ada data spesifik, berikan saran umum
-- Jawab singkat (2-3 kalimat)
-- Gunakan emoji yang sesuai
+INSTRUKSI PENTING:
+1. Jawablah pertanyaan user menggunakan Bahasa Indonesia yang santai tapi sopan.
+2. Gunakan Data Wisata di atas untuk memberikan rekomendasi yang akurat.
+3. Jika user bertanya tentang tempat yang ada di database, berikan info detailnya.
+4. Jika tempat tidak ada di database, berikan saran umum seputar wisata Bandung.
+5. Jawab dengan ringkas (maksimal 3 paragraf pendek).
+6. Gunakan emoji yang relevan agar chat lebih hidup.
 
-Pertanyaan: ${userMessage}
+User Bertanya: "${userMessage}"
 
-Jawaban:`;
+Jawaban Kamu:`;
 
             const result = await this.tryGenerateWithFallback(prompt);
             const aiMessage = result.text.trim();
 
+            // Simpan history (opsional untuk pengembangan lanjut)
             this.conversationHistory.push({ user: userMessage, bot: aiMessage });
             if (this.conversationHistory.length > 10) {
                 this.conversationHistory.shift();
@@ -187,17 +205,14 @@ Jawaban:`;
             };
 
         } catch (error) {
-            console.error('❌ Error:', error);
+            console.error('❌ Error in sendMessage:', error);
             this.isProcessing = false;
             
             return { 
-                error: `Waduh, ada gangguan teknis 😅
-
-Coba tanya:
-🌲 Wisata alam sejuk
-🍜 Kuliner Bandung
-🏛️ Tempat bersejarah
-🎡 Rekreasi keluarga`
+                error: `Maaf, koneksi ke otak AI sedang gangguan 😅. 
+                
+Pesan error: ${error.message}. 
+Coba cek koneksi internetmu atau coba lagi nanti.`
             };
         }
     }
@@ -222,6 +237,7 @@ Coba tanya:
                     const nameLower = name.toLowerCase();
                     const messageLower = message.toLowerCase();
 
+                    // Cek apakah nama tempat disebut dalam jawaban AI
                     if (messageLower.includes(nameLower) && !uniqueNames.has(nameLower)) {
                         uniqueNames.add(nameLower);
                         
@@ -236,7 +252,7 @@ Coba tanya:
                 }
             });
         } catch (error) {
-            console.error('Extract error:', error);
+            console.error('Extract location error:', error);
         }
 
         return locations;
@@ -264,12 +280,12 @@ class ChatUI {
         
         try {
             this.createChatWidget();
-            this.assistant.loadTouristData();
+            await this.assistant.loadTouristData(); // Tunggu data load
             this.attachEventListeners();
             this.initialized = true;
             console.log('✅ ChatUI ready');
         } catch (error) {
-            console.error('❌ Init failed:', error);
+            console.error('❌ ChatUI Init failed:', error);
         }
     }
 
@@ -295,10 +311,10 @@ class ChatUI {
                         </div>
                     </div>
                     <div class="chat-actions">
-                        <button class="chat-action-btn" id="chatReset">
+                        <button class="chat-action-btn" id="chatReset" title="Reset Chat">
                             <i class="ri-refresh-line"></i>
                         </button>
-                        <button class="chat-action-btn" id="chatClose">
+                        <button class="chat-action-btn" id="chatClose" title="Tutup">
                             <i class="ri-close-line"></i>
                         </button>
                     </div>
@@ -308,12 +324,12 @@ class ChatUI {
                         <div class="message-avatar"><i class="ri-robot-2-line"></i></div>
                         <div class="message-content">
                             <p><strong>Sampurasun! 🙏</strong></p>
-                            <p>Aku BandungBot! Mau explore wisata apa hari ini?</p>
+                            <p>Aku BandungBot! Mau cari wisata alam, kuliner, atau sejarah hari ini?</p>
                             <div class="quick-replies">
-                                <button class="quick-reply" data-msg="Wisata alam yang sejuk">🌲 Alam</button>
-                                <button class="quick-reply" data-msg="Kuliner enak di Bandung">🍜 Kuliner</button>
-                                <button class="quick-reply" data-msg="Wisata budaya">🏛️ Budaya</button>
-                                <button class="quick-reply" data-msg="Rekreasi keluarga">🎡 Rekreasi</button>
+                                <button class="quick-reply" data-msg="Rekomendasi wisata alam sejuk">🌲 Alam</button>
+                                <button class="quick-reply" data-msg="Kuliner legendaris Bandung">🍜 Kuliner</button>
+                                <button class="quick-reply" data-msg="Tempat wisata sejarah">🏛️ Budaya</button>
+                                <button class="quick-reply" data-msg="Tempat rekreasi keluarga">🎡 Rekreasi</button>
                             </div>
                         </div>
                     </div>
@@ -323,7 +339,7 @@ class ChatUI {
                         <div class="typing-dots">
                             <span></span><span></span><span></span>
                         </div>
-                        <span class="typing-text">Mengetik...</span>
+                        <span class="typing-text">Sedang mengetik...</span>
                     </div>
                     <div class="chat-input-container">
                         <input type="text" class="chat-input" id="chatInput" placeholder="Tanya wisata Bandung..." autocomplete="off">
@@ -356,8 +372,8 @@ class ChatUI {
                 <div class="chat-message bot">
                     <div class="message-avatar"><i class="ri-robot-2-line"></i></div>
                     <div class="message-content">
-                        <p>Chat direset! 🔄</p>
-                        <p>Mau cari wisata apa?</p>
+                        <p>Chat sudah direset! 🔄</p>
+                        <p>Mau cari info apa lagi?</p>
                         <div class="quick-replies">
                             <button class="quick-reply" data-msg="Wisata alam">🌲 Alam</button>
                             <button class="quick-reply" data-msg="Kuliner">🍜 Kuliner</button>
@@ -387,7 +403,7 @@ class ChatUI {
         
         if (this.isOpen) {
             document.querySelector('.chat-notification').style.display = 'none';
-            document.getElementById('chatInput')?.focus();
+            setTimeout(() => document.getElementById('chatInput')?.focus(), 100);
         }
     }
     
@@ -424,7 +440,7 @@ class ChatUI {
             
         } catch (error) {
             this.showTypingIndicator(false);
-            this.addMessage('Error! Coba lagi 😅', 'bot');
+            this.addMessage('Terjadi kesalahan sistem. Silakan coba lagi.', 'bot');
         }
         
         this.scrollToBottom();
@@ -446,7 +462,7 @@ class ChatUI {
                             data-lat="${loc.coords[1]}" 
                             data-lon="${loc.coords[0]}" 
                             data-name="${loc.name}">
-                        <i class="ri-map-pin-line"></i> ${loc.name}
+                        <i class="ri-map-pin-line"></i> Lihat: ${loc.name}
                     </button>
                 `;
             });
@@ -466,9 +482,11 @@ class ChatUI {
     }
 
     formatMessage(text) {
-        return text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\n/g, '<br>');
+        // Convert Markdown bold to HTML strong
+        let formatted = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        // Convert newlines to <br>
+        formatted = formatted.replace(/\n/g, '<br>');
+        return formatted;
     }
 
     showTypingIndicator(show) {
@@ -485,31 +503,49 @@ class ChatUI {
     }
 
     showLocationOnMap(name, lat, lon) {
-        console.log(`📍 Show: ${name}`);
+        console.log(`📍 Showing on map: ${name}`);
         
         if (window.innerWidth < 768) this.closeChat();
         
-        document.getElementById('explore')?.scrollIntoView({ behavior: 'smooth' });
+        const mapSection = document.getElementById('explore');
+        if (mapSection) {
+            mapSection.scrollIntoView({ behavior: 'smooth' });
+        }
         
+        // Kirim pesan ke iframe peta (jika menggunakan iframe)
         setTimeout(() => {
             const iframe = document.getElementById('mapIframe');
-            iframe?.contentWindow?.postMessage({
-                type: 'FLY_TO_LOCATION',
-                lat: parseFloat(lat),
-                lon: parseFloat(lon),
-                name: name
-            }, '*');
+            // Coba panggil API WebGIS jika tersedia di window (direct access)
+            if (window.WebGIS_API && window.WebGIS_API.flyToLocation) {
+                window.WebGIS_API.flyToLocation(parseFloat(lat), parseFloat(lon));
+            } 
+            // Atau kirim postMessage ke iframe
+            else if (iframe && iframe.contentWindow) {
+                // Pastikan iframe punya listener atau akses ke fungsi global di dalamnya
+                // Jika iframe cross-origin atau butuh cara khusus:
+                try {
+                    iframe.contentWindow.WebGIS_API.flyToLocation(parseFloat(lat), parseFloat(lon));
+                } catch (e) {
+                    console.log('Mencoba postMessage...');
+                    iframe.contentWindow.postMessage({
+                        type: 'FLY_TO_LOCATION',
+                        lat: parseFloat(lat),
+                        lon: parseFloat(lon),
+                        name: name
+                    }, '*');
+                }
+            }
         }, 1000);
     }
 }
 
-// Initialize
+// Initialize Chat Assistant
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 Starting BandungBot...');
+    console.log('🚀 Starting BandungBot Chat Assistant...');
     setTimeout(() => {
         const chat = new ChatUI();
         chat.init();
+        // Expose global untuk debugging
+        window.BandungChatAssistantInstance = chat;
     }, 1500);
 });
-
-window.BandungChatAssistant = ChatUI;
