@@ -4,7 +4,7 @@
 // ================================================
 
 const CONFIG_AI = {
-    API_KEY: 'AIzaSyANBgHwdE8MKxeWy3Rg4ruOraJn70-3RWg', // API Key Anda
+    PROXY_URL: 'https://gemini-proxy-bandung.badarbaradja112.workers.dev/', // API Key Anda
     MODEL_TARGET: 'gemini-2.5-flash',
     
     // PERBAIKAN: Tambahkan dua properti di bawah ini agar kode jalan
